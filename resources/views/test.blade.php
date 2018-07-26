@@ -93,9 +93,10 @@
                             <div class="col-sm-4" style="padding-left: 10px; padding-right: 10px;">
                                 <div class="input-group mb-2 input-group-sm">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text bg-success text-white">1st Child Date of Birth</span>
+                                        <span class="input-group-text bg-success text-white">1st Child DOB</span>
                                     </div>
-                                    {!! Form::text('1st_child_date_of_birth', null, ['class' => 'form-control', 'placeholder' => 'Enter 1st Child Birth Date', 'autocomplete' => 'off', 'id' => 'datepicker', 'readonly' => 'readonly']) !!}
+                                    {!! Form::text('1st_child_date_of_birth', null, ['class' => 'form-control', 'placeholder' => 'Enter 1st Child Date of Birth', 'autocomplete' => 'off', 'id' => '1st_child_date_of_birth', 'readonly' => 'readonly']) !!}
+                                    <span id="1st_child_date_of_birth_show"></span>
                                 </div>
                             </div>
                             <div class="col-sm-4" style="padding-left: 10px; padding-right: 10px;">
@@ -119,9 +120,10 @@
                             <div class="col-sm-4" style="padding-left: 10px; padding-right: 10px;">
                                 <div class="input-group mb-2 input-group-sm">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text bg-success text-white">2nd Child Date of Birth</span>
+                                        <span class="input-group-text bg-success text-white">2nd Child DOB</span>
                                     </div>
-                                    {!! Form::text('2nd_child_date_of_birth', null, ['class' => 'form-control', 'placeholder' => 'Enter 2nd Child Birth Date', 'autocomplete' => 'off', 'id' => 'datepicker1', 'readonly' => 'readonly']) !!}
+                                    {!! Form::text('2nd_child_date_of_birth', null, ['class' => 'form-control', 'placeholder' => 'Enter 2nd Child Date of Birth', 'autocomplete' => 'off', 'id' => '2nd_child_date_of_birth', 'readonly' => 'readonly']) !!}
+                                    <span id="2nd_child_date_of_birth_show"></span>
                                 </div>
                             </div>
                             <div class="col-sm-4" style="padding-left: 10px; padding-right: 10px;">
@@ -159,10 +161,32 @@
         $( function() {
             // $( "#datepicker" ).datepicker({ changeMonth: true, changeYear: true, dateFormat: "yy-mm-dd" });
             // $( "#datepicker" ).datepicker( "setDate", "0" );
-            $( "#datepicker" ).datepicker({ changeMonth: true, changeYear: true });
-            $( "#datepicker" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
-            $( "#datepicker1" ).datepicker({ changeMonth: true, changeYear: true });
-            $( "#datepicker1" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
+            $( "#1st_child_date_of_birth" ).datepicker({ changeMonth: true, changeYear: true, maxDate: +0 });
+            $( "#1st_child_date_of_birth" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
+            $( "#2nd_child_date_of_birth" ).datepicker({ changeMonth: true, changeYear: true, maxDate: +0 });
+            $( "#2nd_child_date_of_birth" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
         } );
      </script>
+
+     <script type="text/javascript">
+        $(document).ready(function(){
+            $("#1st_child_date_of_birth").change(function(){
+                var dateOfBirth2 = $("#1st_child_date_of_birth").val();
+                var url = '{{ url("/test2")}}';
+                $.get(url+'?dateOfBirth2='+dateOfBirth2, function (data) {
+                    $('#1st_child_date_of_birth_show').html(data);
+                });
+            });
+        });
+
+        $(document).ready(function(){
+            $("#2nd_child_date_of_birth").change(function(){
+                var dateOfBirth2 = $("#2nd_child_date_of_birth").val();
+                var url = '{{ url("/test2")}}';
+                $.get(url+'?dateOfBirth2='+dateOfBirth2, function (data) {
+                    $('#2nd_child_date_of_birth_show').html(data);
+                });
+            });
+        });
+    </script>
 @endsection

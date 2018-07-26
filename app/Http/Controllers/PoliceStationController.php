@@ -21,7 +21,7 @@ class PoliceStationController extends Controller
 
     public function index()
     {
-    	$policeStations = PoliceStation::with(['division', 'district'])->get();
+    	$policeStations = PoliceStation::with(['division', 'district'])->orderBy('id', 'desc')->get();
     	return view('police_station.index', compact('policeStations'));
     }
 
@@ -36,7 +36,7 @@ class PoliceStationController extends Controller
     {
     	$input = Input::all();
 	    $rules = [
-	    	'name' => 'required|unique:districts',
+	    	'name' => 'required|unique:police_stations',
 	    	'division_id' => 'required',
 	    	'district_id' => 'required'
 	    ];

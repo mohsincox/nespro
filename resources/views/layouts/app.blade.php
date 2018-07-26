@@ -81,7 +81,7 @@
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
-                 Nestle Profile
+                Nestle Profile
             </a>
             
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -116,6 +116,18 @@
                         <li {{ ( Request::is('police-station') || Request::is('police-station/*') ? 'class=active' : '' ) }}>
                             <a class="nav-link" href="{{ url('/police-station') }}">Police Station</a>
                         </li>
+                        <li {{ ( Request::is('brand') || Request::is('brand/*') ? 'class=active' : '' ) }}>
+                            <a class="nav-link" href="{{ url('/brand') }}">Brand</a>
+                        </li>
+                        <li {{ ( Request::is('product') || Request::is('product/*') ? 'class=active' : '' ) }}>
+                            <a class="nav-link" href="{{ url('/product') }}">Product</a>
+                        </li>
+                        <li {{ ( Request::is('select') || Request::is('select/*') ? 'class=active' : '' ) }}>
+                            <a class="nav-link" href="{{ url('/select') }}">Select</a>
+                        </li>
+                        <li {{ ( Request::is('option') || Request::is('option/*') ? 'class=active' : '' ) }}>
+                            <a class="nav-link" href="{{ url('/option') }}">Option</a>
+                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                                 {{ Auth::user()->name }}
@@ -138,7 +150,7 @@
     @yield('content')
 
     <footer class="mt-5">
-      <div style="background: #43474d;">
+      <div style="background-color: #343a40!important;">
         <center><p style="font-family: 'Open Sans', serif; font-size: 12px; margin-top: 0px; padding: 10px;"><span style="color: #FFFFFF">Developed by</span> <a href="http://www.myolbd.com/" target="_blank" style="color: red;">MY Outsoursing Ltd. </a> <span style="color: #FFFFFF">All Rights Reserved.</span></p></center>
       </div>
     </footer>

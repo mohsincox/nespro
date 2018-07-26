@@ -1,20 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container-fluid mt-1">
+<div class="container mt-1">
 	<div class="row">
 	    <div class="col-sm-12">
 	        <h3>
 	            <i class="fa fa-list-ul"></i>
-	            List of Police Station Names
+	            List of Options
 
-	            <a href="{{ url('police-station/create') }}" class="btn btn-outline-primary pull-right">
-	                <i class="fa fa-plus"></i> Create <b>Police Station Name</b>
+	            <a href="{{ url('option/create') }}" class="btn btn-outline-primary pull-right">
+	                <i class="fa fa-plus"></i> Create <b>Option</b>
 	            </a>
 	        </h3>
 	        <div class="card bg-dark text-white">
 	            <div class="card-header">
-	                <h3 class="text-center"><i class="fa fa-list-ul"></i> List of <code><b>Police Station Names</b></code></h3>
+	                <h3 class="text-center"><i class="fa fa-list-ul"></i> List of <code><b>Options</b></code></h3>
 	            </div>
 	            <div class="card-body">
 	            	<div class="table-responsive">
@@ -22,10 +22,9 @@
 		                    <thead>
 		                        <tr class="success">
 		                            <th>SL</th>
-		                            <th>#</th>
-		                            <th>Police Station Name</th>
-		                            <th>District Name</th>
-		                            <th>Division Name</th>
+		                            <th>Option Name</th>
+		                            <th>Select Name</th>
+		                            <th>Status</th>
 		                            <th>Edit</th>
 		                        </tr>
 		                    </thead>
@@ -33,14 +32,13 @@
 		                    <?php
 		                        $i = 0;
 		                    ?>
-		                    @foreach($policeStations as $policeStation)
+		                    @foreach($options as $option)
 		                        <tr>
 		                            <td>{{ ++$i }}</td>
-		                            <td>{{ $policeStation->id }}</td>
-		                            <td>{{ $policeStation->name }}</td>
-		                            <td>{{ $policeStation->district->name }}</td>
-		                            <td>{{ $policeStation->division->name }}</td>
-		                            <td>{!! Html::link("police-station/$policeStation->id/edit",' Edit', ['class' => 'fa fa-edit btn btn-outline-success btn-xs text-white']) !!}</td>  
+		                            <td>{{ $option->name }}</td>
+		                            <td>{{ $option->select->name }}</td>
+		                            <td>{{ $option->status }}</td>
+		                            <td>{!! Html::link("option/$option->id/edit",' Edit', ['class' => 'fa fa-edit btn btn-outline-success btn-xs text-white']) !!}</td>  
 		                        </tr>
 		                    @endforeach
 		                    </tbody>

@@ -7,10 +7,8 @@
             <div class="card">
                 <div class="card-header">Dashboard</div>
 
-                <div class="card-body">
-                    {!! Form::open(['url' => 'foo/bar']) !!}
-    					{!! Form::text('email', 'example@gmail.com') !!}
-					{!! Form::close() !!}
+                <div class="card-body" style="height: 450px;">
+                    You are logged in!
                 </div>
             </div>
         </div>

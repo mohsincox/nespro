@@ -32,6 +32,12 @@ class HomeController extends Controller
         return view('test');
     }
 
+    public function test2(Request $request)
+    {
+        $dateOfBirth = $request->dateOfBirth2;
+        return view('test2', compact('dateOfBirth'));
+    }
+
     public function divisionDistrictShow(Request $request)
     {   
         $districts = District::where('division_id', $request->division_id)->get();
