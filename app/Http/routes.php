@@ -68,5 +68,7 @@ Route::put('/option/{id}', 'OptionController@update');
 
 Route::get('/crm-profile/division-district-show', 'CrmProfileController@divisionDistrictShow');
 Route::get('/crm-profile/district-ps-show', 'CrmProfileController@districtPsShow');
-Route::get('/crm-profile/create', 'CrmProfileController@create');
 Route::get('/crm-profile/get-ymd', 'CrmProfileController@getYMD');
+Route::get('/crm-profile/brand-product-show', 'CrmProfileController@brandProductShow');
+Route::get('/crm-profile/create', 'CrmProfileController@create');
+Route::post('/crm-profile', 'CrmProfileController@store');

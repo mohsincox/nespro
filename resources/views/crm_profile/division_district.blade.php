@@ -1,4 +1,4 @@
-{!! Form::select('district', $divWiseDistrictList, null, ['class' => 'form-control','placeholder' => 'Select District Name', 'id' => 'district_id']) !!}
+{!! Form::select('district_id', $divWiseDistrictList, null, ['class' => 'form-control','placeholder' => 'Select District Name', 'id' => 'district_id']) !!}
 
 <script type="text/javascript">
 	$(document).ready(function(){
