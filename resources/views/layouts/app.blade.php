@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
     <link href="{{ asset('assets/css/dataTables.bootstrap4-1.10.19.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
 
     <style>
         body {
@@ -127,6 +128,9 @@
                         </li>
                         <li {{ ( Request::is('option') || Request::is('option/*') ? 'class=active' : '' ) }}>
                             <a class="nav-link" href="{{ url('/option') }}">Option</a>
+                        </li>
+                        <li {{ ( Request::is('crm-profile') || Request::is('crm-profile/*') ? 'class=active' : '' ) }}>
+                            <a class="nav-link" href="{{ url('/crm-profile/crm-report-form') }}">CRM Profile</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">

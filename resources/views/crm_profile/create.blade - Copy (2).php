@@ -50,7 +50,7 @@
 	                    {!! Form::hidden('phone_number', null, ['class' => 'form-control', 'placeholder' => 'Enter Phone Number', 'autocomplete' => 'off']) !!}
 	                    {!! Form::hidden('agent', null, ['class' => 'form-control', 'placeholder' => 'Enter Agent', 'autocomplete' => 'off']) !!}
 	                        <div class="row">
-	                            <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
+	                            <div class="col-sm-4" style="padding-left: 10px; padding-right: 10px;">
 	                                <div class="input-group mb-2 input-group-sm">
 	                                    <div class="input-group-prepend">
 	                                        <span class="input-group-text bg-success text-white">Consumer's Name</span>
@@ -58,7 +58,7 @@
 	                                    {!! Form::text('consumer_name', null, ['class' => 'form-control', 'placeholder' => 'Enter Consumer Name', 'autocomplete' => 'off']) !!}
 	                                </div>
 	                            </div>
-	                            <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
+	                            <div class="col-sm-4" style="padding-left: 10px; padding-right: 10px;">
 	                                <div class="input-group mb-2 input-group-sm">
 	                                    <div class="input-group-prepend">
 	                                        <span class="input-group-text bg-success text-white">Consumer's Age</span>
@@ -66,10 +66,7 @@
 	                                    {!! Form::select('consumer_age', $consumerAgeList, null, ['class' => 'form-control','placeholder' => 'Select Consumer Age', 'id' => 'consumer_age']) !!}
 	                                </div>
 	                            </div>
-	                        </div>
-
-	                        <div class="row">
-	                        	<div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
+	                            <div class="col-sm-4" style="padding-left: 10px; padding-right: 10px;">
 	                                <div class="input-group mb-2 input-group-sm">
 	                                    <div class="input-group-prepend">
 	                                        <span class="input-group-text bg-success text-white">Consumer's Gender</span>
@@ -77,7 +74,10 @@
 	                                    {!! Form::select('consumer_gender', $genderList, null, ['class' => 'form-control','placeholder' => 'Select Consumer Gender']) !!}
 	                                </div>
 	                            </div>
-	                            <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
+	                        </div>
+
+	                        <div class="row">
+	                            <div class="col-sm-4" style="padding-left: 10px; padding-right: 10px;">
 	                                <div class="input-group mb-2 input-group-sm">
 	                                    <div class="input-group-prepend">
 	                                        <span class="input-group-text bg-success text-white">Division</span>
@@ -85,10 +85,8 @@
 	                                    {!! Form::select('division_id', $divisionList, null, ['class' => 'form-control','placeholder' => 'Select Division', 'id' => 'division_id']) !!}
 	                                </div>
 	                            </div>
-	                        </div>
 
-	                        <div class="row">
-	                        	<div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
+	                            <div class="col-sm-4" style="padding-left: 10px; padding-right: 10px;">
 	                                <div class="input-group mb-2 input-group-sm">
 	                                    <div class="input-group-prepend">
 	                                        <span class="input-group-text bg-success text-white">District</span>
@@ -101,7 +99,7 @@
 	                                    <span id="division_district_show"></span>
 	                                </div>
 	                            </div>
-	                            <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
+	                            <div class="col-sm-4" style="padding-left: 10px; padding-right: 10px;">
 	                                <div class="input-group mb-2 input-group-sm">
 	                                    <div class="input-group-prepend">
 	                                        <span class="input-group-text bg-success text-white">Police Station</span>
@@ -117,7 +115,7 @@
 	                        </div>
 
 	                        <div class="row">
-	                            <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
+	                            <div class="col-sm-4" style="padding-left: 10px; padding-right: 10px;">
 	                                <div class="input-group mb-2 input-group-sm">
 	                                    <div class="input-group-prepend">
 	                                        <span class="input-group-text bg-success text-white">Address</span>
@@ -125,7 +123,7 @@
 	                                    {!! Form::text('address', null, ['class' => 'form-control', 'placeholder' => 'Enter Address', 'autocomplete' => 'off']) !!}
 	                                </div>
 	                            </div>
-	                            <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
+	                            <div class="col-sm-4" style="padding-left: 10px; padding-right: 10px;">
 	                                <div class="input-group mb-2 input-group-sm">
 	                                    <div class="input-group-prepend">
 	                                        <span class="input-group-text bg-success text-white">Alternative Phone</span>
@@ -133,10 +131,7 @@
 	                                    {!! Form::text('alternative_phone_number', null, ['class' => 'form-control', 'placeholder' => 'Enter Alternative Phone', 'autocomplete' => 'off']) !!}
 	                                </div>
 	                            </div>
-	                        </div>
-
-	                        <div class="row">
-	                        	<div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
+	                            <div class="col-sm-4" style="padding-left: 10px; padding-right: 10px;">
 	                                <div class="input-group mb-2 input-group-sm">
 	                                    <div class="input-group-prepend">
 	                                        <span class="input-group-text bg-success text-white">Profession</span>
@@ -144,7 +139,10 @@
 	                                    {!! Form::select('profession', $professionList, null, ['class' => 'form-control','placeholder' => 'Select Profession']) !!}
 	                                </div>
 	                            </div>
-	                            <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
+	                        </div>
+
+	                        <div class="row">
+	                            <div class="col-sm-4" style="padding-left: 10px; padding-right: 10px;">
 	                                <div class="input-group mb-2 input-group-sm">
 	                                    <div class="input-group-prepend">
 	                                        <span class="input-group-text bg-success text-white">SEC</span>
@@ -152,10 +150,7 @@
 	                                    {!! Form::select('sec', $secList, null, ['class' => 'form-control','placeholder' => 'Select SEC']) !!}
 	                                </div>
 	                            </div>
-	                        </div>
-
-	                        <div class="row">
-	                        	<div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
+	                            <div class="col-sm-4" style="padding-left: 10px; padding-right: 10px;">
 	                                <div class="input-group mb-2 input-group-sm">
 	                                    <div class="input-group-prepend">
 	                                        <span class="input-group-text bg-success text-white">Number of Child</span>
@@ -163,7 +158,7 @@
 	                                    {!! Form::select('number_of_child', $numberList, null, ['class' => 'form-control','placeholder' => 'Select Child No.']) !!}
 	                                </div>
 	                            </div>
-	                            <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
+	                            <div class="col-sm-4" style="padding-left: 10px; padding-right: 10px;">
 	                                <div class="input-group mb-2 input-group-sm">
 	                                    <div class="input-group-prepend">
 	                                        <span class="input-group-text bg-success text-white">Family Members</span>
@@ -172,7 +167,6 @@
 	                                </div>
 	                            </div>
 	                        </div>
-
 	                        <?php
 	                        	if (isset($profile)) {
 	                        		$child1DOB = $profile->child1_DOB;
@@ -189,7 +183,7 @@
 	                        <span id="child3_DOB_from_db" style="display: none;">{{ $child3DOB }}</span>
 
 	                        <div class="row">
-	                            <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
+	                            <div class="col-sm-4" style="padding-left: 10px; padding-right: 10px;">
 	                                <div class="input-group mb-2 input-group-sm">
 	                                    <div class="input-group-prepend">
 	                                        <span class="input-group-text bg-success text-white">Child1 DOB</span>
@@ -198,7 +192,7 @@
 	                                    <span id="child1_DOB_show"></span>
 	                                </div>
 	                            </div>
-	                            <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
+	                            <div class="col-sm-4" style="padding-left: 10px; padding-right: 10px;">
 	                                <div class="input-group mb-2 input-group-sm">
 	                                    <div class="input-group-prepend">
 	                                        <span class="input-group-text bg-success text-white">Child2 DOB</span>
@@ -207,10 +201,7 @@
 	                                    <span id="child2_DOB_show"></span>
 	                                </div>
 	                            </div>
-	                        </div>
-
-	                        <div class="row">
-	                        	<div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
+	                            <div class="col-sm-4" style="padding-left: 10px; padding-right: 10px;">
 	                                <div class="input-group mb-2 input-group-sm">
 	                                    <div class="input-group-prepend">
 	                                        <span class="input-group-text bg-success text-white">Child3 DOB</span>
@@ -219,7 +210,28 @@
 	                                    <span id="child3_DOB_show"></span>
 	                                </div>
 	                            </div>
-	                            <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
+	                        </div>
+
+	                        <div class="row">
+	                            <div class="col-sm-4" style="padding-left: 10px; padding-right: 10px;">
+	                                <div class="input-group mb-2 input-group-sm">
+	                                    <div class="input-group-prepend">
+	                                        <span class="input-group-text bg-primary text-white">Brand</span>
+	                                    </div>
+	                                    {!! Form::select('brand_id', $brandList, null, ['class' => 'form-control', 'placeholder' => 'Select Brand', 'id' => 'brand_id']) !!}
+	                                </div>
+	                            </div>
+	                            <div class="col-sm-4" style="padding-left: 10px; padding-right: 10px;">
+	                                <div class="input-group mb-2 input-group-sm">
+	                                    <div class="input-group-prepend">
+	                                        <span class="input-group-text bg-primary text-white">Product Cat. & SKU</span>
+	                                    </div>
+	                                     {!! Form::select('product', [], null, ['class' => 'form-control', 'placeholder' => 'Select Category & SKU', 'id' => 'hide_product']) !!}
+	                                     <span id="brand_product_show"></span>
+	                                </div>
+	                            </div>
+	                            
+	                            <div class="col-sm-4" style="padding-left: 10px; padding-right: 10px;">
 	                                <div class="input-group mb-2 input-group-sm">
 	                                    <div class="input-group-prepend">
 	                                        <span class="input-group-text bg-success text-white">Prefered Brand</span>
@@ -237,30 +249,10 @@
 	                        </div>
 
 	                        <div class="row">
-	                            <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
+	                            <div class="col-sm-4" style="padding-left: 10px; padding-right: 10px;">
 	                                <div class="input-group mb-2 input-group-sm">
 	                                    <div class="input-group-prepend">
-	                                        <span class="input-group-text bg-primary text-white">Brand</span>
-	                                    </div>
-	                                    {!! Form::select('brand_id', $brandList, null, ['class' => 'form-control', 'placeholder' => 'Select Brand', 'id' => 'brand_id']) !!}
-	                                </div>
-	                            </div>
-	                            <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
-	                                <div class="input-group mb-2 input-group-sm">
-	                                    <div class="input-group-prepend">
-	                                        <span class="input-group-text bg-primary text-white">Product Cat. & SKU</span>
-	                                    </div>
-	                                     {!! Form::select('product', [], null, ['class' => 'form-control', 'placeholder' => 'Select Category & SKU', 'id' => 'hide_product']) !!}
-	                                     <span id="brand_product_show"></span>
-	                                </div>
-	                            </div>
-	                        </div>
-
-	                        <div class="row">
-	                            <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
-	                                <div class="input-group mb-2 input-group-sm">
-	                                    <div class="input-group-prepend">
-	                                        <span class="input-group-text bg-secondary text-white">Comp.Brand Usage</span>
+	                                        <span class="input-group-text bg-primary text-white">Comp.Brand Usage</span>
 	                                    </div>
 	                                    @if(isset($crmLast))
 		                                    {!! Form::text('competition_brand_usage', $crmLast->competition_brand_usage, ['class' => 'form-control', 'placeholder' => 'Competition Brand Usage', 'autocomplete' => 'off']) !!}
@@ -269,10 +261,10 @@
 		                                @endif
 	                                </div>
 	                            </div>
-	                            <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
+	                            <div class="col-sm-4" style="padding-left: 10px; padding-right: 10px;">
 	                                <div class="input-group mb-2 input-group-sm">
 	                                    <div class="input-group-prepend">
-	                                        <span class="input-group-text bg-secondary text-white">Acti./Camp.Name</span>
+	                                        <span class="input-group-text bg-primary text-white">Acti./Camp.Name</span>
 	                                    </div>
 	                                    @if(isset($crmLast))
 		                                    {!! Form::text('activity_campaign_name', $crmLast->activity_campaign_name, ['class' => 'form-control', 'placeholder' => 'Activity/Campaign Name', 'autocomplete' => 'off']) !!}
@@ -281,10 +273,7 @@
 		                                @endif
 	                                </div>
 	                            </div>
-	                        </div>
-
-	                        <div class="row">
-	                        	<div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
+	                            <div class="col-sm-4" style="padding-left: 10px; padding-right: 10px;">
 	                                <div class="input-group mb-2 input-group-sm">
 	                                    <div class="input-group-prepend">
 	                                        <span class="input-group-text bg-primary text-white">Source of Knowing</span>
@@ -297,7 +286,10 @@
   										</datalist>
 	                                </div>
 	                            </div>
-	                            <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
+	                        </div>
+
+	                        <div class="row">
+	                            <div class="col-sm-4" style="padding-left: 10px; padding-right: 10px;">
 	                                <div class="input-group mb-2 input-group-sm">
 	                                    <div class="input-group-prepend">
 	                                        <span class="input-group-text bg-primary text-white">CCID</span>
@@ -305,10 +297,7 @@
 	                                    {!! Form::text('ccid', null, ['class' => 'form-control', 'placeholder' => 'Enter CCID', 'autocomplete' => 'off']) !!}
 	                                </div>
 	                            </div>
-	                        </div>
-
-	                        <div class="row">
-	                        	<div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
+	                            <div class="col-sm-4" style="padding-left: 10px; padding-right: 10px;">
 	                                <div class="input-group mb-2 input-group-sm">
 	                                    <div class="input-group-prepend">
 	                                        <span class="input-group-text bg-primary text-white">Sales Force</span>
@@ -316,7 +305,7 @@
 	                                    {!! Form::select('sales_force', $salesForceList, null, ['class' => 'form-control', 'placeholder' => 'Select Sales Force']) !!}
 	                                </div>
 	                            </div>
-	                            <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
+	                            <div class="col-sm-4" style="padding-left: 10px; padding-right: 10px;">
 	                                <div class="input-group mb-2 input-group-sm">
 	                                    <div class="input-group-prepend">
 	                                        <span class="input-group-text bg-primary text-white">CSI</span>
@@ -327,7 +316,7 @@
 	                        </div>
 
 	                        <div class="row">
-	                            <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
+	                            <div class="col-sm-4" style="padding-left: 10px; padding-right: 10px;">
 	                                <div class="input-group mb-2 input-group-sm">
 	                                    <div class="input-group-prepend">
 	                                        <span class="input-group-text bg-primary text-white">Interested in CRM</span>
@@ -335,7 +324,7 @@
 	                                    {!! Form::select('interested_in_crm', $interestedInCrmList, null, ['class' => 'form-control', 'placeholder' => 'Select Interested in CRM']) !!}
 	                                </div>
 	                            </div>
-	                            <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
+	                            <div class="col-sm-4" style="padding-left: 10px; padding-right: 10px;">
 	                                <div class="input-group mb-2 input-group-sm">
 	                                    <div class="input-group-prepend">
 	                                        <span class="input-group-text bg-primary text-white">Reasons of Call </span>
@@ -343,23 +332,23 @@
 	                                    {!! Form::select('reasons_of_call', $reasonsOfCallList, null, ['class' => 'form-control', 'placeholder' => 'Select Reasons of Call']) !!}
 	                                </div>
 	                            </div>
-	                        </div>
-
-	                        <div class="row">
-	                            <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
-	                                <div class="input-group mb-2 input-group-sm">
-	                                    <div class="input-group-prepend" style="flex: 0 0 13%;">
-	                                        <span class="input-group-text bg-primary text-white">Verbatim</span>
-	                                    </div>
-	                                    {!! Form::text('verbatim', null, ['class' => 'form-control', 'placeholder' => 'Enter Verbatim', 'autocomplete' => 'off']) !!}
-	                                </div>
-	                            </div>
-	                            <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
+	                            <div class="col-sm-4" style="padding-left: 10px; padding-right: 10px;">
 	                                <div class="input-group mb-2 input-group-sm">
 	                                    <div class="input-group-prepend">
 	                                        <span class="input-group-text bg-primary text-white">Call Category</span>
 	                                    </div>
 	                                    {!! Form::select('call_category', $callCategoryList, null, ['class' => 'form-control', 'placeholder' => 'Select Call Category']) !!}
+	                                </div>
+	                            </div>
+	                        </div>
+
+	                        <div class="row">
+	                            <div class="col-sm-12" style="padding-left: 10px; padding-right: 10px;">
+	                                <div class="input-group mb-2 input-group-sm">
+	                                    <div class="input-group-prepend" style="flex: 0 0 13%;">
+	                                        <span class="input-group-text bg-primary text-white">Verbatim</span>
+	                                    </div>
+	                                    {!! Form::text('verbatim', null, ['class' => 'form-control', 'placeholder' => 'Enter Verbatim', 'autocomplete' => 'off']) !!}
 	                                </div>
 	                            </div>
 	                        </div>

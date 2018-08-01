@@ -12,20 +12,20 @@ use App\Models\Brand;
 use App\Models\Product;
 use App\Models\Option;
 use App\Models\Profile;
+use App\Models\Crm;
 
 class CrmProfileController extends Controller
 {
     public function create(Request $request)
     {
-        $phoneNumber=preg_replace('/\D/', '',  $request->phone_number);          //  Deleting Non Numeric Characters
-        if(substr($phoneNumber, 0, 1) == "+" ) $phoneNumber=substr($phoneNumber, 1);       //  Deleting + if in First Position
-        if(substr($phoneNumber, 0, 2) == "88") $phoneNumber=substr($phoneNumber, 2);       //  Deleting 8 if in First Two Position
-        //if(substr($phoneNumber, 0, 2) == "00") $phoneNumber=substr($phoneNumber, 2);       //  Deleting 0 if in First Two Position
-        //if(substr($phoneNumber, 0, 1) == "0" ) $phoneNumber=substr($phoneNumber, 1);       //  Deleting 0 if in First Position
-        //echo $phoneNumber;
-        //die();
-        //$profile = Profile::find(1);
+        $phoneNumber=preg_replace('/\D/', '',  $request->phone_number);
+        if(substr($phoneNumber, 0, 1) == "+" ) $phoneNumber=substr($phoneNumber, 1);
+        if(substr($phoneNumber, 0, 2) == "88") $phoneNumber=substr($phoneNumber, 2);
+        //if(substr($phoneNumber, 0, 2) == "00") $phoneNumber=substr($phoneNumber, 2);
+        //if(substr($phoneNumber, 0, 1) == "0" ) $phoneNumber=substr($phoneNumber, 1);
+        
         $profile = Profile::where('phone_number', $phoneNumber)->first();
+        $crmLast = Crm::where('phone_number', $phoneNumber)->orderBy('id', 'desc')->first();
         $agent = $request->agent;
     	$divisionList = Division::pluck('name', 'id');
     	$districtList = District::pluck('name', 'id');
@@ -46,13 +46,15 @@ class CrmProfileController extends Controller
         $reasonsOfCallList  = Option::where('select_id', 10)->where('status', 'Active')->pluck('name', 'name');
         $callCategoryList  = Option::where('select_id', 11)->where('status', 'Active')->pluck('name', 'name');
         
-    	return view('crm_profile.create', compact('phoneNumber', 'agent', 'divisionList', 'districtList', 'policeStationList', 'brandList', 'brandNameList', 'productList','consumerAgeList', 'genderList', 'professionList', 'secList', 'numberList', 'sourceOfKnowingList', 'salesForceList', 'CSIList', 'interestedInCrmList', 'reasonsOfCallList', 'callCategoryList', 'profile'));
+    	return view('crm_profile.create', compact('phoneNumber', 'agent', 'divisionList', 'districtList', 'policeStationList', 'brandList', 'brandNameList', 'productList','consumerAgeList', 'genderList', 'professionList', 'secList', 'numberList', 'sourceOfKnowingList', 'salesForceList', 'CSIList', 'interestedInCrmList', 'reasonsOfCallList', 'callCategoryList', 'profile', 'crmLast'));
     }
 
     public function getYMD(Request $request)
     {
         $dateOfBirth = $request->dateOfBirth;
-        return view('crm_profile.get_ymd', compact('dateOfBirth'));
+        $interval = date_diff(date_create(), date_create($dateOfBirth));
+        return $interval->format("%yy, %mm, %dd");
+        //return view('crm_profile.get_ymd', compact('dateOfBirth'));
     }
 
     public function divisionDistrictShow(Request $request)
@@ -85,10 +87,12 @@ class CrmProfileController extends Controller
     public function store(Request $request)
     {
         //return $request->all();
+        $phoneNumber=preg_replace('/\D/', '',  $request->phone_number);          
+        if(substr($phoneNumber, 0, 1) == "+" ) $phoneNumber=substr($phoneNumber, 1);       
+        if(substr($phoneNumber, 0, 2) == "88") $phoneNumber=substr($phoneNumber, 2);
        
-
-        $profile = Profile::firstOrNew(array('phone_number' => $request->phone_number));
-        $profile->phone_number = $request->phone_number;
+        $profile = Profile::firstOrNew(array('phone_number' => $phoneNumber));
+        $profile->phone_number = $phoneNumber;
         $profile->agent = $request->agent;
         $profile->consumer_name = $request->consumer_name;
         $profile->consumer_age = $request->consumer_age;
@@ -127,7 +131,42 @@ class CrmProfileController extends Controller
             $profile->prefered_brand = $strPreferedBrand;
         }
         $profile->save();
+
+        $crm = new Crm;
+        $crm->profile_id = $profile->id;
+        $crm->phone_number = $profile->phone_number;
+        $crm->brand_id = $request->brand_id;
+        $crm->product = $request->product;
+        $crm->competition_brand_usage = $request->competition_brand_usage;
+        $crm->activity_campaign_name = $request->activity_campaign_name;
+        $crm->source_of_knowing = $request->source_of_knowing;
+        $crm->ccid = $request->ccid;
+        $crm->sales_force = $request->sales_force;
+        $crm->consumer_satisfaction_index = $request->consumer_satisfaction_index;
+        $crm->interested_in_crm = $request->interested_in_crm;
+        $crm->reasons_of_call = $request->reasons_of_call;
+        $crm->call_category = $request->call_category;
+        $crm->verbatim = $request->verbatim;
+        $crm->save();
+
         flash()->success($profile->phone_number.' Profile & CRM created successfully');
         return redirect()->back();
+    }
+
+    public function crmReportForm()
+    {
+
+        return view('crm_profile.report.form');
+    }
+
+    public function crmReportShow(Request $request)
+    {
+        //return $request->all();
+        $startDate = $request->start_date.' 00:00:00';
+        $endDate = $request->end_date.' 23:59:59';
+        $startDateShow = $request->start_date;
+        $endDateShow = $request->end_date;
+        $crms = Crm::with(['profile', 'profile.division', 'profile.district', 'profile.policeStation', 'brand'])->whereBetween('created_at', [$startDate, $endDate])->orderBy('id', 'desc')->get();
+        return view('crm_profile.report.index', compact('crms', 'startDateShow', 'endDateShow'));
     }
 }

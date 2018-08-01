@@ -72,3 +72,8 @@ Route::get('/crm-profile/get-ymd', 'CrmProfileController@getYMD');
 Route::get('/crm-profile/brand-product-show', 'CrmProfileController@brandProductShow');
 Route::get('/crm-profile/create', 'CrmProfileController@create');
 Route::post('/crm-profile', 'CrmProfileController@store');
+Route::get('/crm-profile/crm-report-form', 'CrmProfileController@crmReportForm');
+Route::post('/crm-profile/crm-report-show', 'CrmProfileController@crmReportShow');
+
+Route::get('/profile-report/child-age-form', 'ProfileReportController@childAgeForm');
+Route::post('/profile-report/child-age-show', 'ProfileReportController@childAgeshow');
