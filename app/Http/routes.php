@@ -74,6 +74,12 @@ Route::get('/crm-profile/create', 'CrmProfileController@create');
 Route::post('/crm-profile', 'CrmProfileController@store');
 Route::get('/crm-profile/crm-report-form', 'CrmProfileController@crmReportForm');
 Route::post('/crm-profile/crm-report-show', 'CrmProfileController@crmReportShow');
+Route::get('/crm-profile/crm-report-form-excel', 'CrmProfileController@crmReportFormExcel');
+Route::post('/crm-profile/crm-report-show-excel', 'CrmProfileController@crmReportShowExcel');
 
 Route::get('/profile-report/child-age-form', 'ProfileReportController@childAgeForm');
-Route::post('/profile-report/child-age-show', 'ProfileReportController@childAgeshow');
+Route::post('/profile-report/child-age-show', 'ProfileReportController@childAgeShow');
+Route::get('/profile-report/get-ymd', 'ProfileReportController@getYMD');
+
+Route::get('/profile-report/child-age-form-new', 'ProfileReportController@childAgeFormNew');
+Route::post('/profile-report/child-age-show-new', 'ProfileReportController@childAgeShowNew');

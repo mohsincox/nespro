@@ -8,6 +8,8 @@ class Profile extends Model
 {
     protected $table = 'profiles';
 
+    protected $fillable = ['phone_number'];
+
     public function division()
     {
         return $this->belongsTo(Division::class, 'division_id');
