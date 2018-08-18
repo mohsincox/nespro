@@ -12,15 +12,15 @@
 		            </a>
 				
 	        </h3>
-	        <div class="card bg-dark text-white">
+	        <div class="card">
 	            <div class="card-header">
-	                <h3 class="text-center"><i class="fa fa-list-ul"></i> List of <code><b>Division Names</b></code></h3>
+	                <h4 class="text-center"><i class="fa fa-list-ul"></i> List of <code><b>Division Names</b></code></h4>
 	            </div>
 	            <div class="card-body">
 	            	<div class="table-responsive">
 	                <table id="myTable" class="table table-bordered table-striped table-hover">
 	                    <thead>
-	                        <tr class="success">
+	                        <tr class="">
 	                            <th>SL</th>
 	                            <th>Division Names</th>
 	                            <!-- <th>View</th> -->
@@ -40,7 +40,7 @@
 	                            <td>{{ $division->name }}</td>
 	                            <!-- <td>{!! Html::link("result/$division->id",' View', ['class' => 'fa fa-eye btn btn-success btn-xs']) !!}</td> -->
 	                            
-	                            	<td>{!! Html::link("division/$division->id/edit",' Edit', ['class' => 'fa fa-edit btn btn-outline-success btn-xs text-white']) !!}</td>
+	                            	<td>{!! Html::link("division/$division->id/edit",' Edit', ['class' => 'fa fa-edit btn btn-outline-success btn-xs']) !!}</td>
 	                            
 	                            <!-- <td><a class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal-{{ $division->id }}">
 	                                    <i class="fa fa-trash"></i> Delete

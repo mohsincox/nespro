@@ -22,6 +22,6 @@ class Profile extends Model
 
     public function policeStation()
     {
-        return $this->belongsTo(PoliceStation::class, 'district_id');
+        return $this->belongsTo(PoliceStation::class, 'police_station_id');
     }
 }

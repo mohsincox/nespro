@@ -6,7 +6,7 @@
 	    <div class="col-sm-12">
 	        <div class="card">
 	            <div class="card-header">
-	                <h3 class="text-center"><i class="fa fa-list-ul"></i> CRM Information from <code><b><i>{{ $startDateShow }}</i></b></code> to <code><b><i>{{ $endDateShow }}</i></b></code></h3>
+	                <h3 class="text-center"><i class="fa fa-list-ul"></i> <code><b><i>{{ $brand->name }}</i></b></code> Brand and <code><b><i>{{ $division->name }}</i></b></code> Division wise Information </h3>
 	            </div>
 	            <div class="card-body">
 	            	<div class="table-responsive">

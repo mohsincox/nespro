@@ -6,7 +6,7 @@
 	    <div class="col-sm-12">
 	        <div class="card">
 	            <div class="card-header">
-	                <span class="text-center"><i class="fa fa-list-ul"></i> Profile Information: Child age from <b><i>{{ $fromYear }}</i></b> Year <b><i>{{ $fromMonth }}</i></b> Month to <b><i>{{ $toYear }}</i></b> Year <b><i>{{ $toMonth }}</i></b> Month </span>
+	                <span class="text-center"><i class="fa fa-list-ul"></i> Profile Information: Child age between <b><i>{{ $childStartAge }}</i></b> and <b><i>{{ $childEndAge }}</i></b> from <b><i>{{ $startDateShow }}</i></b> to <b><i>{{ $endDateShow }}</i></b></span>
 	            </div>
 	            <div class="card-body">
 	            	<div class="table-responsive">

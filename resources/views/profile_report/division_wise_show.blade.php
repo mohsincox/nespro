@@ -4,15 +4,15 @@
 <div class="container-fluid mt-1">
 	<div class="row">
 	    <div class="col-sm-12">
-	        <div class="card bg-dark text-white">
+	        <div class="card">
 	            <div class="card-header">
-	                <span class="text-center"><i class="fa fa-list-ul"></i> Profile Information: Child age between <b><i>{{ $childStartAge }}</i></b> and <b><i>{{ $childEndAge }}</i></b> from <b><i>    </i></b> to <b><i>    </i></b></span>
+	                <h4 class="text-center"><i class="fa fa-list-ul"></i> <b><i>{{ $profiles[0]->division->name }}</i></b> Division wise Information </h4>
 	            </div>
 	            <div class="card-body">
 	            	<div class="table-responsive">
 	                <table id="myTable" class="table table-bordered table-striped table-hover">
 	                    <thead>
-	                        <tr class="success">
+	                        <tr class="">
 	                            <th>SL</th>
 	                            <th>Consu. No.</th>
 	                            <th>Con Name</th>

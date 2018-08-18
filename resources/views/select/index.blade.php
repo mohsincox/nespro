@@ -10,9 +10,8 @@
 		            <a href="{{ url('select/create') }}" class="btn btn-outline-primary pull-right">
 		                <i class="fa fa-plus"></i> Create <b>Select Name</b>
 		            </a>
-				
 	        </h3>
-	        <div class="card bg-dark text-white">
+	        <div class="card">
 	            <div class="card-header">
 	                <h3 class="text-center"><i class="fa fa-list-ul"></i> List of <code><b>Select Names</b></code></h3>
 	            </div>
@@ -20,7 +19,7 @@
 	            	<div class="table-responsive">
 	                <table id="myTable" class="table table-bordered table-striped table-hover">
 	                    <thead>
-	                        <tr class="success">
+	                        <tr class="">
 	                            <th>SL</th>
 	                            <th>Select Names</th>
 	                            <th>Edit</th>
@@ -34,7 +33,7 @@
 	                        <tr>
 	                            <td>{{ ++$i }}</td>
 	                            <td>{{ $select->name }}</td>
-	                            <td>{!! Html::link("select/$select->id/edit",' Edit', ['class' => 'fa fa-edit btn btn-outline-success btn-xs text-white']) !!}</td>
+	                            <td>{!! Html::link("select/$select->id/edit",' Edit', ['class' => 'fa fa-edit btn btn-outline-success btn-xs']) !!}</td>
 	                        </tr>
 	                    @endforeach
 	                    </tbody>

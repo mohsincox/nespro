@@ -12,7 +12,7 @@
 		            </a>
 				
 	        </h3>
-	        <div class="card bg-dark text-white">
+	        <div class="card">
 	            <div class="card-header">
 	                <h3 class="text-center"><i class="fa fa-list-ul"></i> List of <code><b>Brand Names</b></code></h3>
 	            </div>
@@ -20,7 +20,7 @@
 	            	<div class="table-responsive">
 	                <table id="myTable" class="table table-bordered table-striped table-hover">
 	                    <thead>
-	                        <tr class="success">
+	                        <tr class="">
 	                            <th>SL</th>
 	                            <th>Brand Names</th>
 	                            <th>Edit</th>
@@ -34,7 +34,7 @@
 	                        <tr>
 	                            <td>{{ ++$i }}</td>
 	                            <td>{{ $brand->name }}</td>
-	                            <td>{!! Html::link("brand/$brand->id/edit",' Edit', ['class' => 'fa fa-edit btn btn-outline-success btn-xs text-white']) !!}</td>
+	                            <td>{!! Html::link("brand/$brand->id/edit",' Edit', ['class' => 'fa fa-edit btn btn-outline-success btn-xs']) !!}</td>
 	                        </tr>
 	                    @endforeach
 	                    </tbody>

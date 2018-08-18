@@ -7,9 +7,14 @@
 }
 
 
-ul li:hover ul {
+/*ul li:hover ul {
     display: block;
+}*/
+
+.dropdown:hover>.dropdown-menu {
+  display: block;
 }
+
 
 
 @media print {

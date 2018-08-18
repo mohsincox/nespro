@@ -49,7 +49,7 @@
 
 <div class="form-group">
     <div class="row">
-        {!! Form::submit('Submit', ['class' => 'btn btn-outline-primary btn-block text-white']) !!}
+        {!! Form::submit('Submit', ['class' => 'btn btn-outline-primary btn-block']) !!}
     </div>
 </div>
 {!! Form::close() !!}

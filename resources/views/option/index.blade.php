@@ -12,7 +12,7 @@
 	                <i class="fa fa-plus"></i> Create <b>Option</b>
 	            </a>
 	        </h3>
-	        <div class="card bg-dark text-white">
+	        <div class="card">
 	            <div class="card-header">
 	                <h3 class="text-center"><i class="fa fa-list-ul"></i> List of <code><b>Options</b></code></h3>
 	            </div>
@@ -20,7 +20,7 @@
 	            	<div class="table-responsive">
 		                <table id="myTable" class="table table-striped table-bordered table-hover">
 		                    <thead>
-		                        <tr class="success">
+		                        <tr class="">
 		                            <th>SL</th>
 		                            <th>Option Name</th>
 		                            <th>Select Name</th>
@@ -38,7 +38,7 @@
 		                            <td>{{ $option->name }}</td>
 		                            <td>{{ $option->select->name }}</td>
 		                            <td>{{ $option->status }}</td>
-		                            <td>{!! Html::link("option/$option->id/edit",' Edit', ['class' => 'fa fa-edit btn btn-outline-success btn-xs text-white']) !!}</td>  
+		                            <td>{!! Html::link("option/$option->id/edit",' Edit', ['class' => 'fa fa-edit btn btn-outline-success btn-xs']) !!}</td>  
 		                        </tr>
 		                    @endforeach
 		                    </tbody>

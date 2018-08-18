@@ -21,7 +21,7 @@ class PoliceStationController extends Controller
 
     public function index()
     {
-    	$policeStations = PoliceStation::with(['division', 'district'])->orderBy('id', 'desc')->get();
+    	$policeStations = PoliceStation::with(['division', 'district'])->get();
     	return view('police_station.index', compact('policeStations'));
     }
 

@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container mt-1">
+<div class="container mt-1" style="height: 500px;">
 	    <div class="row">
 	        <div class="col-sm-6 offset-sm-3">
-	            <div class="card bg-dark text-white">
-	                <div class="card-header">Report Download</div>
+	            <div class="card">
+	                <div class="card-header">CRM with Profile Report Form</div>
 	                <div class="card-body">
 	                    {!! Form::open(['url' => 'crm-profile/crm-report-show', 'method' => 'post', 'class' => 'form-horizontal']) !!}
 	                        <div class="required form-group {{ $errors->has('start_date') ? 'has-error' : ''}}">
@@ -38,7 +38,7 @@
 
 	                        <div class="form-group">
 	                            <div class="col-sm-8 offset-sm-3">
-	                                {!! Form::submit('Submit', ['class' => 'btn btn-outline-primary btn-block text-white']) !!}
+	                                {!! Form::submit('Submit', ['class' => 'btn btn-outline-primary btn-block']) !!}
 	                            </div>
 	                        </div>
 	                    {!! Form::close() !!}
