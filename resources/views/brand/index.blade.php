@@ -4,14 +4,16 @@
 <div class="container mt-1">
 	<div class="row">
 	    <div class="col-sm-12">
-	        <h3>
-	            <i class="fa fa-list-ul"></i>
-	            List of Brand Names
-		            <a href="{{ url('brand/create') }}" class="btn btn-outline-primary pull-right">
+	    	<div class="row">
+		    	<div class="col-sm-7">
+		        		<h3><i class="fa fa-list-ul"></i> List of Brand Names</h3>
+		        </div>
+	        	<div class="col-sm-5">
+	        		<a href="{{ url('brand/create') }}" class="btn btn-outline-primary float-right">
 		                <i class="fa fa-plus"></i> Create <b>Brand Name</b>
 		            </a>
-				
-	        </h3>
+		    	</div>
+	        </div>
 	        <div class="card">
 	            <div class="card-header">
 	                <h3 class="text-center"><i class="fa fa-list-ul"></i> List of <code><b>Brand Names</b></code></h3>

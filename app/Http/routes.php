@@ -73,20 +73,28 @@ Route::get('/crm-profile/brand-product-show', 'CrmProfileController@brandProduct
 Route::get('/crm-profile/create', 'CrmProfileController@create');
 Route::post('/crm-profile', 'CrmProfileController@store');
 
-Route::get('/crm-profile/crm-report-form', 'CrmProfileController@crmReportForm');
-Route::post('/crm-profile/crm-report-show', 'CrmProfileController@crmReportShow');
-Route::get('/crm-profile/crm-report-form-excel', 'CrmProfileController@crmReportFormExcel');
-Route::post('/crm-profile/crm-report-show-excel', 'CrmProfileController@crmReportShowExcel');
+Route::get('/field-user/division-district-show', 'FieldUserController@divisionDistrictShow');
+Route::get('/field-user/district-ps-show', 'FieldUserController@districtPsShow');
+Route::get('/field-user/get-ymd', 'FieldUserController@getYMD');
+Route::get('/field-user/brand-product-show', 'FieldUserController@brandProductShow');
+Route::get('/field-user', 'FieldUserController@index');
+Route::get('/field-user/create', 'FieldUserController@create');
+Route::post('/field-user', 'FieldUserController@store');
 
-Route::get('/crm-profile/brand-wise-form', 'CrmProfileController@brandWiseForm');
-Route::post('/crm-profile/brand-wise-show', 'CrmProfileController@brandWiseShow');
-Route::get('/crm-profile/brand-wise-form-excel', 'CrmProfileController@brandWiseFormExcel');
-Route::post('/crm-profile/brand-wise-show-excel', 'CrmProfileController@brandWiseShowExcel');
+Route::get('/crm-profile/crm-report-form', 'CrmProfileReportController@crmReportForm');
+Route::post('/crm-profile/crm-report-show', 'CrmProfileReportController@crmReportShow');
+Route::get('/crm-profile/crm-report-form-excel', 'CrmProfileReportController@crmReportFormExcel');
+Route::post('/crm-profile/crm-report-show-excel', 'CrmProfileReportController@crmReportShowExcel');
 
-Route::get('/crm-profile/brand-and-div-wise-form', 'CrmProfileController@brandAndDivWiseForm');
-Route::post('/crm-profile/brand-and-div-wise-show', 'CrmProfileController@brandAndDivWiseShow');
-Route::get('/crm-profile/brand-and-div-wise-form-excel', 'CrmProfileController@brandAndDivWiseFormExcel');
-Route::post('/crm-profile/brand-and-div-wise-show-excel', 'CrmProfileController@brandAndDivWiseShowExcel');
+Route::get('/crm-profile/brand-wise-form', 'CrmProfileReportController@brandWiseForm');
+Route::post('/crm-profile/brand-wise-show', 'CrmProfileReportController@brandWiseShow');
+Route::get('/crm-profile/brand-wise-form-excel', 'CrmProfileReportController@brandWiseFormExcel');
+Route::post('/crm-profile/brand-wise-show-excel', 'CrmProfileReportController@brandWiseShowExcel');
+
+Route::get('/crm-profile/brand-and-div-wise-form', 'CrmProfileReportController@brandAndDivWiseForm');
+Route::post('/crm-profile/brand-and-div-wise-show', 'CrmProfileReportController@brandAndDivWiseShow');
+Route::get('/crm-profile/brand-and-div-wise-form-excel', 'CrmProfileReportController@brandAndDivWiseFormExcel');
+Route::post('/crm-profile/brand-and-div-wise-show-excel', 'CrmProfileReportController@brandAndDivWiseShowExcel');
 
 Route::get('/profile-report/child-age-form-old', 'ProfileReportController@childAgeFormOld');
 Route::post('/profile-report/child-age-show-old', 'ProfileReportController@childAgeShowOld');

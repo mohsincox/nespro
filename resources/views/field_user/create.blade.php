@@ -39,18 +39,34 @@
         </div>
 	    <div class="row">
 	        <div class="col-sm-12" style="padding-left: 0px; padding-right: 0px;">
-	            <!-- <div class="card bg-dark"> -->
 	            <div class="card bg-dark text-white">
-	            	<!-- <img src="{{URL::asset('/assets/image/nestle.png')}}" alt="profile Pic" height="87" width="300"> -->
 	                <div class="card-header" style="padding: 0px;">
 	                	<img src="{{URL::asset('/assets/image/nestle.png')}}" alt="profile Pic" height="87" width="300" >
-	                    <span class="float-right" style="padding: 22px; font-size: 22px;">Nestle Inbound CRM <small><?php echo 'Phone No: <mark>'.$phoneNumber; ?></mark></small> & <small><?php echo 'Agent: <mark>'.$agent; ?></mark></small></span>
+	                    <span class="float-right" style="padding: 22px; font-size: 22px;">Nestle Field User CRM <small><mark>Create Form</mark></small></span>
 	                </div>
 
 	                <div class="card-body" style="padding: 5px;">
-	                    {!! Form::model($profile, ['url' => 'crm-profile', 'method' => 'post']) !!}
-	                    {!! Form::hidden('phone_number', null, ['class' => 'form-control', 'placeholder' => 'Enter Phone Number', 'autocomplete' => 'off']) !!}
-	                    {!! Form::hidden('agent', null, ['class' => 'form-control', 'placeholder' => 'Enter Agent', 'autocomplete' => 'off']) !!}
+	                    {!! Form::open(['url' => 'field-user', 'method' => 'post']) !!}
+	                
+	                    	<div class="row">
+	                            <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
+	                                <div class="input-group mb-2 input-group-sm">
+	                                    <div class="input-group-prepend">
+	                                        <span class="input-group-text bg-success text-white">Consumer's Phone No.</span>
+	                                    </div>
+	                                    {!! Form::text('phone_number', null, ['class' => 'form-control', 'placeholder' => 'Enter Consumer Phone Number', 'autocomplete' => 'off', 'onkeypress' => 'return event.charCode >= 48 && event.charCode <= 57', 'required' => 'required']) !!}
+	                                </div>
+	                            </div>
+	                            <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
+	                                <div class="input-group mb-2 input-group-sm">
+	                                    <div class="input-group-prepend">
+	                                        <span class="input-group-text bg-success text-white">Field User Name</span>
+	                                    </div>
+	                                    {!! Form::text('', Auth::user()->name, ['class' => 'form-control', 'placeholder' => 'Enter Consumer Name', 'autocomplete' => 'off', 'disabled' => 'disabled']) !!}
+	                                </div>
+	                            </div>
+	                        </div>
+
 	                        <div class="row">
 	                            <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
 	                                <div class="input-group mb-2 input-group-sm">
@@ -239,129 +255,25 @@
 	                        </div>
 
 	                        <div class="row">
-	                            <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
-	                                <div class="input-group mb-2 input-group-sm">
-	                                    <div class="input-group-prepend">
-	                                        <span class="input-group-text bg-primary text-white">Brand</span>
-	                                    </div>
-	                                    {!! Form::select('brand_id', $brandList, null, ['class' => 'form-control', 'placeholder' => 'Select Brand', 'id' => 'brand_id']) !!}
-	                                </div>
-	                            </div>
-	                            <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
-	                                <div class="input-group mb-2 input-group-sm">
-	                                    <div class="input-group-prepend">
-	                                        <span class="input-group-text bg-primary text-white">Product Cat. & SKU</span>
-	                                    </div>
-	                                     {!! Form::select('product', [], null, ['class' => 'form-control', 'placeholder' => 'Select Category & SKU', 'id' => 'hide_product']) !!}
-	                                     <span id="brand_product_show"></span>
-	                                </div>
-	                            </div>
+	                            
+	                            
 	                        </div>
 
 	                        <div class="row">
 	                            <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
 	                                <div class="input-group mb-2 input-group-sm">
 	                                    <div class="input-group-prepend">
-	                                        <span class="input-group-text bg-secondary text-white">Comp.Brand Usage</span>
+	                                        <span class="input-group-text bg-success text-white">Comp.Brand Usage</span>
 	                                    </div>
-	                                    @if(isset($crmLast))
-		                                    {!! Form::text('competition_brand_usage', $crmLast->competition_brand_usage, ['class' => 'form-control', 'placeholder' => 'Competition Brand Usage', 'autocomplete' => 'off']) !!}
-	                                    @else
-		                                    {!! Form::text('competition_brand_usage', null, ['class' => 'form-control', 'placeholder' => 'Competition Brand Usage', 'autocomplete' => 'off']) !!}
-		                                @endif
+		                                {!! Form::text('competition_brand_usage', null, ['class' => 'form-control', 'placeholder' => 'Competition Brand Usage', 'autocomplete' => 'off']) !!}
 	                                </div>
 	                            </div>
 	                            <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
 	                                <div class="input-group mb-2 input-group-sm">
 	                                    <div class="input-group-prepend">
-	                                        <span class="input-group-text bg-secondary text-white">Acti./Camp.Name</span>
+	                                        <span class="input-group-text bg-success text-white">Acti./Camp.Name</span>
 	                                    </div>
-	                                    @if(isset($crmLast))
-		                                    {!! Form::text('activity_campaign_name', $crmLast->activity_campaign_name, ['class' => 'form-control', 'placeholder' => 'Activity/Campaign Name', 'autocomplete' => 'off']) !!}
-	                                    @else
-		                                    {!! Form::text('activity_campaign_name', null, ['class' => 'form-control', 'placeholder' => 'Activity/Campaign Name', 'autocomplete' => 'off']) !!}
-		                                @endif
-	                                </div>
-	                            </div>
-	                        </div>
-
-	                        <div class="row">
-	                        	<div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
-	                                <div class="input-group mb-2 input-group-sm">
-	                                    <div class="input-group-prepend">
-	                                        <span class="input-group-text bg-primary text-white">Source of Knowing</span>
-	                                    </div>
-	                                    {!! Form::text('source_of_knowing', null, ['class' => 'form-control', 'placeholder' => 'Select or Enter Knowing', 'autocomplete' => 'off', 'list' => 'source_of_knowing']) !!}
-	                                    <datalist id="source_of_knowing">
-	                                    	@foreach($sourceOfKnowingList as $sourceOfKnowing)
-										    	<option value="{{ $sourceOfKnowing->name }}">
-										    @endforeach
-  										</datalist>
-	                                </div>
-	                            </div>
-	                            <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
-	                                <div class="input-group mb-2 input-group-sm">
-	                                    <div class="input-group-prepend">
-	                                        <span class="input-group-text bg-primary text-white">CCID</span>
-	                                    </div>
-	                                    {!! Form::text('ccid', null, ['class' => 'form-control', 'placeholder' => 'Enter CCID', 'autocomplete' => 'off']) !!}
-	                                </div>
-	                            </div>
-	                        </div>
-
-	                        <div class="row">
-	                        	<div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
-	                                <div class="input-group mb-2 input-group-sm">
-	                                    <div class="input-group-prepend">
-	                                        <span class="input-group-text bg-primary text-white">Sales Force</span>
-	                                    </div>
-	                                    {!! Form::select('sales_force', $salesForceList, null, ['class' => 'form-control', 'placeholder' => 'Select Sales Force']) !!}
-	                                </div>
-	                            </div>
-	                            <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
-	                                <div class="input-group mb-2 input-group-sm">
-	                                    <div class="input-group-prepend">
-	                                        <span class="input-group-text bg-primary text-white">CSI</span>
-	                                    </div>
-	                                    {!! Form::select('consumer_satisfaction_index', $CSIList, null, ['class' => 'form-control', 'placeholder' => 'Consumer Satisfaction Index']) !!}
-	                                </div>
-	                            </div>
-	                        </div>
-
-	                        <div class="row">
-	                            <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
-	                                <div class="input-group mb-2 input-group-sm">
-	                                    <div class="input-group-prepend">
-	                                        <span class="input-group-text bg-primary text-white">Interested in CRM</span>
-	                                    </div>
-	                                    {!! Form::select('interested_in_crm', $interestedInCrmList, null, ['class' => 'form-control', 'placeholder' => 'Select Interested in CRM']) !!}
-	                                </div>
-	                            </div>
-	                            <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
-	                                <div class="input-group mb-2 input-group-sm">
-	                                    <div class="input-group-prepend">
-	                                        <span class="input-group-text bg-primary text-white">Reasons of Call </span>
-	                                    </div>
-	                                    {!! Form::select('reasons_of_call', $reasonsOfCallList, null, ['class' => 'form-control', 'placeholder' => 'Select Reasons of Call']) !!}
-	                                </div>
-	                            </div>
-	                        </div>
-
-	                        <div class="row">
-	                            <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
-	                                <div class="input-group mb-2 input-group-sm">
-	                                    <div class="input-group-prepend" style="flex: 0 0 13%;">
-	                                        <span class="input-group-text bg-primary text-white">Verbatim</span>
-	                                    </div>
-	                                    {!! Form::text('verbatim', null, ['class' => 'form-control', 'placeholder' => 'Enter Verbatim', 'autocomplete' => 'off']) !!}
-	                                </div>
-	                            </div>
-	                            <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
-	                                <div class="input-group mb-2 input-group-sm">
-	                                    <div class="input-group-prepend">
-	                                        <span class="input-group-text bg-primary text-white">Call Category</span>
-	                                    </div>
-	                                    {!! Form::select('call_category', $callCategoryList, null, ['class' => 'form-control', 'placeholder' => 'Select Call Category']) !!}
+		                                {!! Form::text('activity_campaign_name', null, ['class' => 'form-control', 'placeholder' => 'Activity/Campaign Name', 'autocomplete' => 'off']) !!}
 	                                </div>
 	                            </div>
 	                        </div>

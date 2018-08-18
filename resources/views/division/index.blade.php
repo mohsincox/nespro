@@ -4,14 +4,16 @@
 <div class="container mt-1">
 	<div class="row">
 	    <div class="col-sm-12">
-	        <h3>
-	            <i class="fa fa-list-ul"></i>
-	            List of Division Names
-		            <a href="{{ url('division/create') }}" class="btn btn-outline-primary pull-right">
+	        <div class="row">
+		    	<div class="col-sm-7">
+		        		<h3><i class="fa fa-list-ul"></i> List of Division Names</h3>
+		        </div>
+	        	<div class="col-sm-5">
+	        		<a href="{{ url('division/create') }}" class="btn btn-outline-primary pull-right">
 		                <i class="fa fa-plus"></i> Create <b>Division Name</b>
 		            </a>
-				
-	        </h3>
+		    	</div>
+	        </div>
 	        <div class="card">
 	            <div class="card-header">
 	                <h4 class="text-center"><i class="fa fa-list-ul"></i> List of <code><b>Division Names</b></code></h4>

@@ -4,14 +4,16 @@
 <div class="container mt-1">
 	<div class="row">
 	    <div class="col-sm-12">
-	        <h3>
-	            <i class="fa fa-list-ul"></i>
-	            List of Police Station Names
-
-	            <a href="{{ url('police-station/create') }}" class="btn btn-outline-primary pull-right">
-	                <i class="fa fa-plus"></i> Create <b>Police Station Name</b>
-	            </a>
-	        </h3>
+	        <div class="row">
+		    	<div class="col-sm-7">
+		        		<h3><i class="fa fa-list-ul"></i> List of Police Station Names</h3>
+		        </div>
+	        	<div class="col-sm-5">
+	        		<a href="{{ url('police-station/create') }}" class="btn btn-outline-primary pull-right">
+	                	<i class="fa fa-plus"></i> Create <b>Police Station Name</b>
+	            	</a>
+		    	</div>
+	        </div>
 	        <div class="card">
 	            <div class="card-header">
 	                <h3 class="text-center"><i class="fa fa-list-ul"></i> List of <code><b>Police Station Names</b></code></h3>
