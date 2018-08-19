@@ -6,7 +6,7 @@
 	    <div class="col-sm-12">
 	        <div class="card">
 	            <div class="card-header">
-	                <h3 class="text-center"><i class="fa fa-list-ul"></i> CRM Information of <code><b><i>{{ Auth::user()->name }}</i></b></code> to <code><b><i>{{ "Field User" }}</i></b></code></h3>
+	                <h3 class="text-center"><i class="fa fa-list-ul"></i> CRM information of <code><b><i>{{ Auth::user()->name }}</i></b></code> as a <code><b><i>{{ "Field User" }}</i></b></code></h3>
 	            </div>
 	            <div class="card-body">
 	            	<div class="table-responsive">

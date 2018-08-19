@@ -315,4 +315,12 @@ class CrmProfileReportController extends Controller
             });
         })->export($type);
     }
+
+    public function allReportFormExcel()
+    {
+        $divisionList = Division::pluck('name', 'id');
+        $districtList = District::pluck('name', 'id');
+        $brandList = Brand::pluck('name', 'id');
+        return view('crm_profile.report.all_report_form_excel', compact('divisionList', 'districtList', 'brandList'));
+    }
 }

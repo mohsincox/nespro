@@ -81,6 +81,8 @@ Route::get('/field-user', 'FieldUserController@index');
 Route::get('/field-user/create', 'FieldUserController@create');
 Route::post('/field-user', 'FieldUserController@store');
 
+Route::get('/all-report-form-excel', 'CrmProfileReportController@allReportFormExcel');
+
 Route::get('/crm-profile/crm-report-form', 'CrmProfileReportController@crmReportForm');
 Route::post('/crm-profile/crm-report-show', 'CrmProfileReportController@crmReportShow');
 Route::get('/crm-profile/crm-report-form-excel', 'CrmProfileReportController@crmReportFormExcel');

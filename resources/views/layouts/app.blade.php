@@ -45,7 +45,7 @@
 <body id="app-layout">
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">
+            <a class="navbar-brand" href="{{ url('/home') }}">
                 Nestle Profile
             </a>
             
@@ -69,10 +69,16 @@
                             <a class="nav-link" href="{{ url('/register') }}">Register</a>
                         </li>
                     @else
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/home') }}">Home</a>
+                       <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Area </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="{{ url('/division') }}">Division</a>
+                                <a class="dropdown-item" href="{{ url('/district') }}">District</a>
+                                <a class="dropdown-item" href="{{ url('/police-station') }}">Police Station</a>
+                                
+                            </div>
                         </li>
-                        <li {{ ( Request::is('division') || Request::is('division/*') ? 'class=active' : '' ) }}>
+                        <!-- <li {{ ( Request::is('division') || Request::is('division/*') ? 'class=active' : '' ) }}>
                             <a class="nav-link" href="{{ url('/division') }}">Division</a>
                         </li>
                         <li {{ ( Request::is('district') || Request::is('district/*') ? 'class=active' : '' ) }}>
@@ -80,7 +86,7 @@
                         </li>
                         <li {{ ( Request::is('police-station') || Request::is('police-station/*') ? 'class=active' : '' ) }}>
                             <a class="nav-link" href="{{ url('/police-station') }}">Police Station</a>
-                        </li>
+                        </li> -->
                         <li {{ ( Request::is('brand') || Request::is('brand/*') ? 'class=active' : '' ) }}>
                             <a class="nav-link" href="{{ url('/brand') }}">Brand</a>
                         </li>
@@ -93,14 +99,14 @@
                         <li {{ ( Request::is('option') || Request::is('option/*') ? 'class=active' : '' ) }}>
                             <a class="nav-link" href="{{ url('/option') }}">Option</a>
                         </li>
-                        <li {{ ( Request::is('crm-profile') || Request::is('crm-profile/*') ? 'class=active' : '' ) }}>
+                        <!-- <li {{ ( Request::is('crm-profile') || Request::is('crm-profile/*') ? 'class=active' : '' ) }}>
                             <a class="nav-link" href="{{ url('/crm-profile/crm-report-form') }}">CRM Profile</a>
+                        </li> -->
+                        <li {{ ( Request::is('field-user') || Request::is('field-user/*') ? 'class=active' : '' ) }}>
+                            <a class="nav-link" href="{{ url('/field-user/create') }}" target="_blank">Field User CRM</a>
                         </li>
                         <li {{ ( Request::is('field-user') || Request::is('field-user/*') ? 'class=active' : '' ) }}>
-                            <a class="nav-link" href="{{ url('/field-user/create') }}" target="_blank">Field User 423423</a>
-                        </li>
-                        <li {{ ( Request::is('field-user') || Request::is('field-user/*') ? 'class=active' : '' ) }}>
-                            <a class="nav-link" href="{{ url('/field-user') }}">Field User</a>
+                            <a class="nav-link" href="{{ url('/field-user') }}">Field User Info</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Report </a>
