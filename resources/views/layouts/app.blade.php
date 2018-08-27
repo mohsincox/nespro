@@ -134,6 +134,9 @@
                                 <a class="dropdown-item" href="{{ url('/crm-profile/brand-and-div-wise-form-excel') }}">Brand and Division Wise Download</a>
                             </div>
                         </li>
+                        <li {{ ( Request::is('all-report-form-excel') || Request::is('all-report-form-excel/*') ? 'class=active' : '' ) }}>
+                            <a class="nav-link" href="{{ url('/all-report-form-excel') }}">All Reports</a>
+                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                                 {{ Auth::user()->name }}

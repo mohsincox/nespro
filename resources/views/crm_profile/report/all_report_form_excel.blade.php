@@ -9,131 +9,230 @@
 	                <h3 class="text-center"><i class="fa fa-list-ul"></i> Form of <code><b>All Reports</b></code> at a glance</h3>
 	            </div>
 	            <div class="card-body">
-	            	<div class="col-sm-10 offset-sm-2 mb-4">
 	            	<!-- CRM and Profile Report Download Form -->
-	            	{!! Form::open(['url' => 'crm-profile/crm-report-show-excel', 'method' => 'post', 'class' => 'form-inline']) !!}
+	            	<div class="row">
+		            	<div class="col-sm-12 border border-primary mb-1">
+			            	<h5 class="text-center"><span class="bg-primary">Date Wise CRM Report With Profile Information</span></h5>
+			            	{!! Form::open(['url' => 'crm-profile/crm-report-show-excel', 'method' => 'post', 'class' => 'form-inline justify-content-center']) !!}
 
-    					{!! Form::label('start_date', 'Date Wise: Start Date:', ['class' => 'mb-2 mr-sm-2']) !!}
-    					{!! Form::text('start_date', null, ['class' => 'form-control mb-2 mr-sm-2', 'placeholder' => 'Select Start Date', 'autocomplete' => 'off', 'id' => 'start_date', 'readonly' => 'readonly', 'required' => 'required']) !!}
+		    					{!! Form::label('start_date', 'Start Date:', ['class' => 'mb-2 mr-sm-2']) !!}
+		    					{!! Form::text('start_date', null, ['class' => 'form-control mb-2 mr-sm-2', 'id' => 'start_date', 'placeholder' => 'Select Start Date', 'autocomplete' => 'off', 'readonly' => 'readonly', 'required' => 'required']) !!}
 
-    					{!! Form::label('end_date', 'End Date:', ['class' => 'mb-2 mr-sm-2 control-label']) !!}
-    					{!! Form::text('end_date', null, ['class' => 'form-control mb-2 mr-sm-2', 'placeholder' => 'Select End Date', 'autocomplete' => 'off', 'id' => 'end_date', 'readonly' => 'readonly', 'required' => 'required']) !!}
+		    					{!! Form::label('end_date', 'End Date:', ['class' => 'mb-2 mr-sm-2 control-label']) !!}
+		    					{!! Form::text('end_date', null, ['class' => 'form-control mb-2 mr-sm-2', 'id' => 'end_date', 'placeholder' => 'Select End Date', 'autocomplete' => 'off', 'readonly' => 'readonly', 'required' => 'required']) !!}
 
-    					{!! Form::select('type', ['xlsx' => 'XLSX', 'csv' => 'CSV', 'xls' => 'XLS'], 'xlsx', ['class' => 'form-control', 'placeholder' => 'Select File Type', 'id' => 'type', 'required' => 'required', 'hidden' => 'hidden']) !!}
-    					    
-  						{!! Form::submit('Download', ['class' => 'btn btn-outline-primary mb-2']) !!}
+		    					{!! Form::select('type', ['xlsx' => 'XLSX', 'csv' => 'CSV', 'xls' => 'XLS'], 'xlsx', ['class' => 'form-control', 'placeholder' => 'Select File Type', 'id' => 'type', 'required' => 'required', 'hidden' => 'hidden']) !!}
+		    					    
+		  						{!! Form::submit('Download', ['class' => 'btn btn-outline-primary mb-2']) !!}
 
-  					{!! Form::close() !!}
+		  					{!! Form::close() !!}
+	  					</div>
   					</div>
 
-  					<div class="col-sm-10 offset-sm-1 mb-4">
   					<!-- Child Age Report Download Form -->
-  					{!! Form::open(['url' => 'profile-report/child-age-show-excel', 'method' => 'post', 'class' => 'form-inline']) !!}
+  					<div class="row">
+  						<div class="col-sm-12 border border-secondary mb-1">
+		  					<h5 class="text-center"><span class="bg-secondary">Child Age Wise</span></h5>
+		  					{!! Form::open(['url' => 'profile-report/child-age-show-excel', 'method' => 'post', 'class' => 'form-inline justify-content-center']) !!}
 
-  						{!! Form::label('from_year', 'Child Age Wise: From', ['class' => 'control-label mb-2 mr-sm-2']) !!}
-  						{!! Form::select('from_year', ['0' => '00', '1' => '01', '2' => '02', '3' => '03', '4' => '04', '5' => '05', '6' => '06'], null, ['class' => 'form-control mb-2 mr-sm-2','placeholder' => 'Select Year', 'required' => 'required']) !!}
+		  						{!! Form::label('from_year', 'From', ['class' => 'control-label mb-2 mr-sm-2']) !!}
+		  						{!! Form::select('from_year', ['0' => '00', '1' => '01', '2' => '02', '3' => '03', '4' => '04', '5' => '05', '6' => '06'], null, ['class' => 'form-control mb-2 mr-sm-2','placeholder' => 'Select Year', 'required' => 'required']) !!}
 
-  						{!! Form::select('from_month', ['0' => '00', '1' => '01', '2' => '02', '3' => '03', '4' => '04', '5' => '05', '6' => '06','7' => '07', '8' => '08', '9' => '09', '10' => '10', '11' => '11'], null, ['class' => 'form-control mb-2 mr-sm-2','placeholder' => 'Select Month', 'required' => 'required']) !!}
+		  						{!! Form::select('from_month', ['0' => '00', '1' => '01', '2' => '02', '3' => '03', '4' => '04', '5' => '05', '6' => '06','7' => '07', '8' => '08', '9' => '09', '10' => '10', '11' => '11'], null, ['class' => 'form-control mb-2 mr-sm-2','placeholder' => 'Select Month', 'required' => 'required']) !!}
 
-  						{!! Form::label('to_year', 'To', ['class' => 'control-label mb-2 mr-sm-2']) !!}
-  						{!! Form::select('to_year', ['0' => '00', '1' => '01', '2' => '02', '3' => '03', '4' => '04', '5' => '05', '6' => '06'], null, ['class' => 'form-control mb-2 mr-sm-2','placeholder' => 'Select Year', 'required' => 'required']) !!}
+		  						{!! Form::label('to_year', 'To', ['class' => 'control-label mb-2 mr-sm-2']) !!}
+		  						{!! Form::select('to_year', ['0' => '00', '1' => '01', '2' => '02', '3' => '03', '4' => '04', '5' => '05', '6' => '06'], null, ['class' => 'form-control mb-2 mr-sm-2','placeholder' => 'Select Year', 'required' => 'required']) !!}
 
-  						{!! Form::select('to_month', ['0' => '00', '1' => '01', '2' => '02', '3' => '03', '4' => '04', '5' => '05', '6' => '06','7' => '07', '8' => '08', '9' => '09', '10' => '10', '11' => '11'], null, ['class' => 'form-control mb-2 mr-sm-2','placeholder' => 'Select Month', 'required' => 'required']) !!}
+		  						{!! Form::select('to_month', ['0' => '00', '1' => '01', '2' => '02', '3' => '03', '4' => '04', '5' => '05', '6' => '06','7' => '07', '8' => '08', '9' => '09', '10' => '10', '11' => '11'], null, ['class' => 'form-control mb-2 mr-sm-2','placeholder' => 'Select Month', 'required' => 'required']) !!}
 
-  						{!! Form::select('type', ['xlsx' => 'XLSX', 'csv' => 'CSV', 'xls' => 'XLS'], 'xlsx', ['class' => 'form-control', 'placeholder' => 'Select File Type', 'id' => 'type', 'required' => 'required', 'hidden' => 'hidden']) !!}
+		  						{!! Form::select('type', ['xlsx' => 'XLSX', 'csv' => 'CSV', 'xls' => 'XLS'], 'xlsx', ['class' => 'form-control', 'placeholder' => 'Select File Type', 'id' => 'type', 'required' => 'required', 'hidden' => 'hidden']) !!}
 
-  						{!! Form::submit('Download', ['class' => 'btn btn-outline-primary mb-2']) !!}
+		  						{!! Form::submit('Download', ['class' => 'btn btn-outline-secondary mb-2']) !!}
 
-  					{!! Form::close() !!}
+		  					{!! Form::close() !!}
+  						</div>
   					</div>
 
-  					<div class="col-sm-8 offset-sm-2 mb-4">
+  					<!-- Child Age Date Wise Report Download Form -->
+  					<div class="row">
+  						<div class="col-sm-12 border border-info mb-1">
+		  					<h5 class="text-center"><span class="bg-info">Child Age and Date Wise</span></h5>
+		  					{!! Form::open(['url' => 'profile-report/child-age-and-date-wise-show-excel', 'method' => 'post', 'class' => 'form-inline justify-content-center']) !!}
+
+		  						{!! Form::label('start_date', 'Start Date:', ['class' => 'mb-2 mr-sm-2']) !!}
+		    					{!! Form::text('start_date', null, ['class' => 'form-control mb-2 mr-sm-2', 'id' => 'start_date_age', 'placeholder' => 'Select Start Date', 'autocomplete' => 'off', 'readonly' => 'readonly', 'required' => 'required']) !!}
+
+		    					{!! Form::label('end_date', 'End Date:', ['class' => 'mb-2 mr-sm-2 control-label']) !!}
+		    					{!! Form::text('end_date', null, ['class' => 'form-control mb-2 mr-sm-2', 'id' => 'end_date_age', 'placeholder' => 'Select End Date', 'autocomplete' => 'off', 'readonly' => 'readonly', 'required' => 'required']) !!}
+
+		  						{!! Form::label('from_year', 'From', ['class' => 'control-label mb-2 mr-sm-2']) !!}
+		  						{!! Form::select('from_year', ['0' => '00', '1' => '01', '2' => '02', '3' => '03', '4' => '04', '5' => '05', '6' => '06'], null, ['class' => 'form-control mb-2 mr-sm-2','placeholder' => 'Select Year', 'required' => 'required']) !!}
+
+		  						{!! Form::select('from_month', ['0' => '00', '1' => '01', '2' => '02', '3' => '03', '4' => '04', '5' => '05', '6' => '06','7' => '07', '8' => '08', '9' => '09', '10' => '10', '11' => '11'], null, ['class' => 'form-control mb-2 mr-sm-2','placeholder' => 'Select Month', 'required' => 'required']) !!}
+
+		  						{!! Form::label('to_year', 'To', ['class' => 'control-label mb-2 mr-sm-2']) !!}
+		  						{!! Form::select('to_year', ['0' => '00', '1' => '01', '2' => '02', '3' => '03', '4' => '04', '5' => '05', '6' => '06'], null, ['class' => 'form-control mb-2 mr-sm-2','placeholder' => 'Select Year', 'required' => 'required']) !!}
+
+		  						{!! Form::select('to_month', ['0' => '00', '1' => '01', '2' => '02', '3' => '03', '4' => '04', '5' => '05', '6' => '06','7' => '07', '8' => '08', '9' => '09', '10' => '10', '11' => '11'], null, ['class' => 'form-control mb-2 mr-sm-2','placeholder' => 'Select Month', 'required' => 'required']) !!}
+
+		  						{!! Form::select('type', ['xlsx' => 'XLSX', 'csv' => 'CSV', 'xls' => 'XLS'], 'xlsx', ['class' => 'form-control', 'placeholder' => 'Select File Type', 'id' => 'type', 'required' => 'required', 'hidden' => 'hidden']) !!}
+
+		  						{!! Form::submit('Download', ['class' => 'btn btn-outline-info mb-2']) !!}
+
+		  					{!! Form::close() !!}
+  						</div>
+  					</div>
+
   					<!-- Division Wise Report Download Form -->
-  					{!! Form::open(['url' => 'profile-report/division-wise-show-excel', 'method' => 'post', 'class' => 'form-inline']) !!}
+  					<div class="row">
+  						<div class="col-sm-12 border border-success mb-1">
+		  					<h5 class="text-center"><span class="bg-success">Division Wise</span></h5>
+		  					{!! Form::open(['url' => 'profile-report/division-wise-show-excel', 'method' => 'post', 'class' => 'form-inline justify-content-center']) !!}
 
-  						{!! Form::label('division_id', 'Division Wise: Select Division', ['class' => 'control-label mb-2 mr-sm-2']) !!}
+		  						{!! Form::label('division_id', 'Select Division', ['class' => 'control-label mb-2 mr-sm-2']) !!}
 
-  						{!! Form::select('division_id', $divisionList, null, ['class' => 'form-control mb-2 mr-sm-2', 'placeholder' => 'Select Division', 'id' => 'division_id_no_need', 'required' => 'required']) !!}
+		  						{!! Form::select('division_id', $divisionList, null, ['class' => 'form-control mb-2 mr-sm-2', 'placeholder' => 'Select Division', 'id' => 'division_id_no_need', 'required' => 'required']) !!}
 
-  						{!! Form::select('type', ['xlsx' => 'XLSX', 'csv' => 'CSV', 'xls' => 'XLS'], 'xlsx', ['class' => 'form-control', 'placeholder' => 'Select File Type', 'id' => 'type', 'required' => 'required', 'hidden' => 'hidden']) !!}
+		  						{!! Form::select('type', ['xlsx' => 'XLSX', 'csv' => 'CSV', 'xls' => 'XLS'], 'xlsx', ['class' => 'form-control', 'placeholder' => 'Select File Type', 'id' => 'type', 'required' => 'required', 'hidden' => 'hidden']) !!}
 
-  						{!! Form::submit('Download', ['class' => 'btn btn-outline-primary mb-2']) !!}
+		  						{!! Form::submit('Download', ['class' => 'btn btn-outline-success mb-2']) !!}
 
-  						<a href="{{ url('/profile-report/division-all-download-excel') }}" class="btn btn-outline-primary mb-2 ml-sm-2" role="button">All Division Download</a>
+		  						<a href="{{ url('/profile-report/division-all-download-excel') }}" class="btn btn-outline-success mb-2 ml-sm-2" role="button">All Division Download</a>
 
-  					{!! Form::close() !!}
+		  					{!! Form::close() !!}
+  						</div>
   					</div>
 
-  					<div class="col-sm-9 offset-sm-2 mb-4">
+  					<!-- Division and Date Wise Report Download Form -->
+  					<div class="row">
+  						<div class="col-sm-12 border border-success mb-1">
+		  					<h5 class="text-center"><span class="bg-success">Division and Date Wise</span></h5>
+		  					{!! Form::open(['url' => 'profile-report/division-and-date-wise-show-excel', 'method' => 'post', 'class' => 'form-inline justify-content-center']) !!}
+
+		  						{!! Form::label('start_date', 'Start Date:', ['class' => 'mb-2 mr-sm-2']) !!}
+		    					{!! Form::text('start_date', null, ['class' => 'form-control mb-2 mr-sm-2', 'id' => 'start_date_division', 'placeholder' => 'Select Start Date', 'autocomplete' => 'off', 'readonly' => 'readonly', 'required' => 'required']) !!}
+
+		    					{!! Form::label('end_date', 'End Date:', ['class' => 'mb-2 mr-sm-2 control-label']) !!}
+		    					{!! Form::text('end_date', null, ['class' => 'form-control mb-2 mr-sm-2', 'id' => 'end_date_division', 'placeholder' => 'Select End Date', 'autocomplete' => 'off', 'readonly' => 'readonly', 'required' => 'required']) !!}
+
+		  						{!! Form::label('division_id', 'Select Division', ['class' => 'control-label mb-2 mr-sm-2']) !!}
+
+		  						{!! Form::select('division_id', $divisionList, null, ['class' => 'form-control mb-2 mr-sm-2', 'placeholder' => 'Select Division', 'id' => 'division_id_no_need', 'required' => 'required']) !!}
+
+		  						{!! Form::select('type', ['xlsx' => 'XLSX', 'csv' => 'CSV', 'xls' => 'XLS'], 'xlsx', ['class' => 'form-control', 'placeholder' => 'Select File Type', 'id' => 'type', 'required' => 'required', 'hidden' => 'hidden']) !!}
+
+		  						{!! Form::submit('Download', ['class' => 'btn btn-outline-success mb-2']) !!}
+
+		  					{!! Form::close() !!}
+  						</div>
+  					</div>
+
   					<!-- District Wise Report Download Form -->
-  					{!! Form::open(['url' => 'profile-report/district-wise-show-excel', 'method' => 'post', 'class' => 'form-inline']) !!}
+  					<div class="row">
+  						<div class="col-sm-12 border border-danger mb-1">
+		  					<h5 class="text-center"><span class="bg-danger">District Wise</span></h5>
+		  					{!! Form::open(['url' => 'profile-report/district-wise-show-excel', 'method' => 'post', 'class' => 'form-inline justify-content-center']) !!}
 
-  						{!! Form::label('division_id', 'District Wise: Select Division', ['class' => 'control-label mb-2 mr-sm-2']) !!}
+		  						{!! Form::label('division_id', 'Select Division', ['class' => 'control-label mb-2 mr-sm-2']) !!}
 
-  						{!! Form::select('division_id', $divisionList, null, ['class' => 'form-control mb-2 mr-sm-2', 'placeholder' => 'Select Division', 'id' => 'division_id', 'required' => 'required']) !!}
+		  						{!! Form::select('division_id', $divisionList, null, ['class' => 'form-control mb-2 mr-sm-2', 'placeholder' => 'Select Division', 'id' => 'division_id', 'required' => 'required']) !!}
 
-  						{!! Form::label('district_id', 'Select District', ['class' => 'control-label mb-2 mr-sm-2']) !!}
-  						<span id="division_district_show">
-  						{!! Form::select('district_id', [], null, ['class' => 'form-control mb-2 mr-sm-2', 'placeholder' => 'Select District', 'id' => 'district_id_no_need', 'required' => 'required']) !!}
-  						</span>
-  						{!! Form::select('type', ['xlsx' => 'XLSX', 'csv' => 'CSV', 'xls' => 'XLS'], 'xlsx', ['class' => 'form-control', 'placeholder' => 'Select File Type', 'id' => 'type', 'required' => 'required', 'hidden' => 'hidden']) !!}
+		  						{!! Form::label('district_id', 'Select District', ['class' => 'control-label mb-2 mr-sm-2']) !!}
+		  						<span id="division_district_show">
+		  						{!! Form::select('district_id', [], null, ['class' => 'form-control mb-2 mr-sm-2', 'placeholder' => 'Select District', 'id' => 'district_id_no_need', 'required' => 'required']) !!}
+		  						</span>
+		  						{!! Form::select('type', ['xlsx' => 'XLSX', 'csv' => 'CSV', 'xls' => 'XLS'], 'xlsx', ['class' => 'form-control', 'placeholder' => 'Select File Type', 'id' => 'type', 'required' => 'required', 'hidden' => 'hidden']) !!}
 
-  						{!! Form::submit('Download', ['class' => 'btn btn-outline-primary mb-2']) !!}
+		  						{!! Form::submit('Download', ['class' => 'btn btn-outline-danger mb-2']) !!}
 
-  					{!! Form::close() !!}
+		  					{!! Form::close() !!}
+  						</div>
   					</div>
 
-  					<div class="col-sm-11 offset-sm-1 mb-4">
   					<!-- PS Wise Report Download Form -->
-  					{!! Form::open(['url' => 'profile-report/ps-wise-show-excel', 'method' => 'post', 'class' => 'form-inline']) !!}
+  					<div class="row">
+  						<div class="col-sm-12 border border-warning mb-1">
+		  					<h5 class="text-center"><span class="bg-warning">Police Station Wise</span></h5>
+		  					{!! Form::open(['url' => 'profile-report/ps-wise-show-excel', 'method' => 'post', 'class' => 'form-inline justify-content-center']) !!}
 
-  						{!! Form::label('district_id', 'Police Station Wise: Select District', ['class' => 'control-label mb-2 mr-sm-2']) !!}
+		  						{!! Form::label('district_id', 'Select District', ['class' => 'control-label mb-2 mr-sm-2']) !!}
 
-  						{!! Form::select('district_id', $districtList, null, ['class' => 'form-control mb-2 mr-sm-2 js-example-basic-single', 'placeholder' => 'Select District', 'id' => 'district_id', 'required' => 'required']) !!}
+		  						{!! Form::select('district_id', $districtList, null, ['class' => 'form-control mb-2 mr-sm-2 js-example-basic-single', 'placeholder' => 'Select District', 'id' => 'district_id', 'required' => 'required']) !!}
 
-  						{!! Form::label('police_station_id', 'Select Police Station', ['class' => 'control-label mb-2 mr-sm-2']) !!}
-  						<span id="district_ps_show">
-  						{!! Form::select('police_station_id', [], null, ['class' => 'form-control mb-2 mr-sm-2', 'placeholder' => 'Select Police Station', 'id' => 'police_station_id', 'required' => 'required']) !!}
-  						</span>
-  						{!! Form::select('type', ['xlsx' => 'XLSX', 'csv' => 'CSV', 'xls' => 'XLS'], 'xlsx', ['class' => 'form-control', 'placeholder' => 'Select File Type', 'id' => 'type', 'required' => 'required', 'hidden' => 'hidden']) !!}
-    					    
-  						{!! Form::submit('Download', ['class' => 'btn btn-outline-primary mb-2']) !!}
+		  						{!! Form::label('police_station_id', 'Select Police Station', ['class' => 'control-label mb-2 mr-sm-2']) !!}
+		  						<span id="district_ps_show">
+		  						{!! Form::select('police_station_id', [], null, ['class' => 'form-control mb-2 mr-sm-2', 'placeholder' => 'Select Police Station', 'id' => 'police_station_id', 'required' => 'required']) !!}
+		  						</span>
+		  						{!! Form::select('type', ['xlsx' => 'XLSX', 'csv' => 'CSV', 'xls' => 'XLS'], 'xlsx', ['class' => 'form-control', 'placeholder' => 'Select File Type', 'id' => 'type', 'required' => 'required', 'hidden' => 'hidden']) !!}
+		    					    
+		  						{!! Form::submit('Download', ['class' => 'btn btn-outline-warning mb-2']) !!}
 
-  					{!! Form::close() !!}
+		  					{!! Form::close() !!}
+  						</div>
   					</div>
 
-  					<div class="col-sm-6 offset-sm-3 mb-4">
   					<!-- Brand Wise Report Download Form -->
-  					{!! Form::open(['url' => 'crm-profile/brand-wise-show-excel', 'method' => 'post', 'class' => 'form-inline']) !!}
+  					<div class="row">
+  						<div class="col-sm-12 border border-info mb-1">
+		  					<h5 class="text-center"><span class="bg-info">Brand Wise</span></h5>
+		  					{!! Form::open(['url' => 'crm-profile/brand-wise-show-excel', 'method' => 'post', 'class' => 'form-inline justify-content-center']) !!}
 
-  						{!! Form::label('brand_id', 'Brand Wise: Select Brand', ['class' => 'control-label mb-2 mr-sm-2']) !!}
+		  						{!! Form::label('brand_id', 'Select Brand', ['class' => 'control-label mb-2 mr-sm-2']) !!}
 
-  						{!! Form::select('brand_id', $brandList, null, ['class' => 'form-control mb-2 mr-sm-2', 'placeholder' => 'Select Brand', 'id' => 'brand_id', 'required' => 'required']) !!}
+		  						{!! Form::select('brand_id', $brandList, null, ['class' => 'form-control mb-2 mr-sm-2', 'placeholder' => 'Select Brand', 'id' => 'brand_id', 'required' => 'required']) !!}
 
-  						{!! Form::select('type', ['xlsx' => 'XLSX', 'csv' => 'CSV', 'xls' => 'XLS'], 'xlsx', ['class' => 'form-control', 'placeholder' => 'Select File Type', 'id' => 'type', 'required' => 'required', 'hidden' => 'hidden']) !!}
-    					    
-  						{!! Form::submit('Download', ['class' => 'btn btn-outline-primary mb-2']) !!}
+		  						{!! Form::select('type', ['xlsx' => 'XLSX', 'csv' => 'CSV', 'xls' => 'XLS'], 'xlsx', ['class' => 'form-control', 'placeholder' => 'Select File Type', 'id' => 'type', 'required' => 'required', 'hidden' => 'hidden']) !!}
+		    					    
+		  						{!! Form::submit('Download', ['class' => 'btn btn-outline-info mb-2']) !!}
 
-  					{!! Form::close() !!}
+		  					{!! Form::close() !!}
+  						</div>
   					</div>
 
-  					<div class="col-sm-10 offset-sm-1">
+  					<!-- Brand Wise Report Download Form -->
+  					<div class="row">
+  						<div class="col-sm-12 border border-success mb-1">
+		  					<h5 class="text-center"><span class="bg-success">Brand Wise with Date Range</span></h5>
+		  					{!! Form::open(['url' => 'crm-profile/brand-and-date-wise-show-excel', 'method' => 'post', 'class' => 'form-inline justify-content-center']) !!}
+
+		  						{!! Form::label('start_date', 'Start Date:', ['class' => 'mb-2 mr-sm-2']) !!}
+		    					{!! Form::text('start_date', null, ['class' => 'form-control mb-2 mr-sm-2', 'placeholder' => 'Select Start Date', 'autocomplete' => 'off', 'id' => 'start_date_brand', 'readonly' => 'readonly', 'required' => 'required']) !!}
+
+		    					{!! Form::label('end_date', 'End Date:', ['class' => 'mb-2 mr-sm-2 control-label']) !!}
+		    					{!! Form::text('end_date', null, ['class' => 'form-control mb-2 mr-sm-2', 'placeholder' => 'Select End Date', 'autocomplete' => 'off', 'id' => 'end_date_brand', 'readonly' => 'readonly', 'required' => 'required']) !!}
+
+		  						{!! Form::label('brand_id', 'Select Brand', ['class' => 'control-label mb-2 mr-sm-2']) !!}
+
+		  						{!! Form::select('brand_id', $brandList, null, ['class' => 'form-control mb-2 mr-sm-2', 'placeholder' => 'Select Brand', 'id' => 'brand_id', 'required' => 'required']) !!}
+
+		  						{!! Form::select('type', ['xlsx' => 'XLSX', 'csv' => 'CSV', 'xls' => 'XLS'], 'xlsx', ['class' => 'form-control', 'placeholder' => 'Select File Type', 'id' => 'type', 'required' => 'required', 'hidden' => 'hidden']) !!}
+		    					    
+		  						{!! Form::submit('Download', ['class' => 'btn btn-outline-success mb-2']) !!}
+
+		  					{!! Form::close() !!}
+  						</div>
+  					</div>
+
   					<!-- Brand and Division Wise Report Download Form -->
-  					{!! Form::open(['url' => 'crm-profile/brand-and-div-wise-show-excel', 'method' => 'post', 'class' => 'form-inline']) !!}
+  					<div class="row">
+  						<div class="col-sm-12 border border-dark mb-1">
+		  					<h5 class="text-center text-white"><span class="bg-dark">Brand and Division Wise</span></h5>
+		  					{!! Form::open(['url' => 'crm-profile/brand-and-div-wise-show-excel', 'method' => 'post', 'class' => 'form-inline justify-content-center']) !!}
 
-  						{!! Form::label('brand_id', 'Brand and Division Wise: Select Brand', ['class' => 'control-label mb-2 mr-sm-2']) !!}
+		  						{!! Form::label('brand_id', 'Select Brand', ['class' => 'control-label mb-2 mr-sm-2']) !!}
 
-  						{!! Form::select('brand_id', $brandList, null, ['class' => 'form-control mb-2 mr-sm-2', 'placeholder' => 'Select Brand', 'id' => 'brand_id', 'required' => 'required']) !!}
+		  						{!! Form::select('brand_id', $brandList, null, ['class' => 'form-control mb-2 mr-sm-2', 'placeholder' => 'Select Brand', 'id' => 'brand_id', 'required' => 'required']) !!}
 
-  						{!! Form::label('division_id', 'Select Division', ['class' => 'control-label mb-2 mr-sm-2']) !!}
+		  						{!! Form::label('division_id', 'Select Division', ['class' => 'control-label mb-2 mr-sm-2']) !!}
 
-  						{!! Form::select('division_id', $divisionList, null, ['class' => 'form-control mb-2 mr-sm-2', 'placeholder' => 'Select Division', 'id' => 'division_id', 'required' => 'required']) !!}
+		  						{!! Form::select('division_id', $divisionList, null, ['class' => 'form-control mb-2 mr-sm-2', 'placeholder' => 'Select Division', 'id' => 'division_id', 'required' => 'required']) !!}
 
-  						{!! Form::select('type', ['xlsx' => 'XLSX', 'csv' => 'CSV', 'xls' => 'XLS'], 'xlsx', ['class' => 'form-control', 'placeholder' => 'Select File Type', 'id' => 'type', 'required' => 'required', 'hidden' => 'hidden']) !!}
-    					    
-  						{!! Form::submit('Download', ['class' => 'btn btn-outline-primary mb-2']) !!}
+		  						{!! Form::select('type', ['xlsx' => 'XLSX', 'csv' => 'CSV', 'xls' => 'XLS'], 'xlsx', ['class' => 'form-control', 'placeholder' => 'Select File Type', 'id' => 'type', 'required' => 'required', 'hidden' => 'hidden']) !!}
+		    					    
+		  						{!! Form::submit('Download', ['class' => 'btn btn-outline-dark mb-2']) !!}
 
-  					{!! Form::close() !!}
+		  					{!! Form::close() !!}
+  						</div>
   					</div>
   					<!-- <form class="form-inline" role="form">
     					<label for="email2" class="mb-2 mr-sm-2">Email:</label>
@@ -158,10 +257,25 @@
 	<script src="https://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 	<script>
 		$( function() {
-			$( "#start_date" ).datepicker({ changeMonth: true, changeYear: true, dateFormat: "yy-mm-dd", maxDate: +0 });
+        	$( "#start_date" ).datepicker({ changeMonth: true, changeYear: true, dateFormat: "yy-mm-dd", maxDate: +0 });
         	$( "#start_date" ).datepicker( "setDate", "0" );
         	$( "#end_date" ).datepicker({ changeMonth: true, changeYear: true, dateFormat: "yy-mm-dd", maxDate: +0 });
         	$( "#end_date" ).datepicker( "setDate", "0" );
+
+        	$( "#start_date_age" ).datepicker({ changeMonth: true, changeYear: true, dateFormat: "yy-mm-dd", maxDate: +0 });
+        	$( "#start_date_age" ).datepicker( "setDate", "0" );
+        	$( "#end_date_age" ).datepicker({ changeMonth: true, changeYear: true, dateFormat: "yy-mm-dd", maxDate: +0 });
+        	$( "#end_date_age" ).datepicker( "setDate", "0" );
+
+        	$( "#start_date_division" ).datepicker({ changeMonth: true, changeYear: true, dateFormat: "yy-mm-dd", maxDate: +0 });
+        	$( "#start_date_division" ).datepicker( "setDate", "0" );
+        	$( "#end_date_division" ).datepicker({ changeMonth: true, changeYear: true, dateFormat: "yy-mm-dd", maxDate: +0 });
+        	$( "#end_date_division" ).datepicker( "setDate", "0" );
+
+        	$( "#start_date_brand" ).datepicker({ changeMonth: true, changeYear: true, dateFormat: "yy-mm-dd", maxDate: +0 });
+        	$( "#start_date_brand" ).datepicker( "setDate", "0" );
+        	$( "#end_date_brand" ).datepicker({ changeMonth: true, changeYear: true, dateFormat: "yy-mm-dd", maxDate: +0 });
+        	$( "#end_date_brand" ).datepicker( "setDate", "0" );
 		} );
 	 </script>
 	 <script type="text/javascript">

@@ -97,6 +97,7 @@ Route::get('/crm-profile/brand-and-div-wise-form', 'CrmProfileReportController@b
 Route::post('/crm-profile/brand-and-div-wise-show', 'CrmProfileReportController@brandAndDivWiseShow');
 Route::get('/crm-profile/brand-and-div-wise-form-excel', 'CrmProfileReportController@brandAndDivWiseFormExcel');
 Route::post('/crm-profile/brand-and-div-wise-show-excel', 'CrmProfileReportController@brandAndDivWiseShowExcel');
+Route::post('/crm-profile/brand-and-date-wise-show-excel', 'CrmProfileReportController@brandAndDateWiseShowExcel');
 
 Route::get('/profile-report/child-age-form-old', 'ProfileReportController@childAgeFormOld');
 Route::post('/profile-report/child-age-show-old', 'ProfileReportController@childAgeShowOld');
@@ -106,6 +107,7 @@ Route::get('/profile-report/child-age-form', 'ProfileReportController@childAgeFo
 Route::post('/profile-report/child-age-show', 'ProfileReportController@childAgeShow');
 Route::get('/profile-report/child-age-form-excel', 'ProfileReportController@childAgeFormExcel');
 Route::post('/profile-report/child-age-show-excel', 'ProfileReportController@childAgeShowExcel');
+Route::post('/profile-report/child-age-and-date-wise-show-excel', 'ProfileReportController@childAgeAndDateWiseShowExcel');
 
 Route::get('/profile-report/division-all-show', 'ProfileReportController@divisionAllShow');
 Route::get('/profile-report/division-all-download-excel', 'ProfileReportController@divisionAllDownloadExcel');
@@ -113,6 +115,7 @@ Route::get('/profile-report/division-wise-form', 'ProfileReportController@divisi
 Route::post('/profile-report/division-wise-show', 'ProfileReportController@divisionWiseShow');
 Route::get('/profile-report/division-wise-form-excel', 'ProfileReportController@divisionWiseFormExcel');
 Route::post('/profile-report/division-wise-show-excel', 'ProfileReportController@divisionWiseShowExcel');
+Route::post('/profile-report/division-and-date-wise-show-excel', 'ProfileReportController@divisionAndDateWiseShowExcel');
 
 Route::get('/profile-report/district-wise-form', 'ProfileReportController@districtWiseForm');
 Route::get('/profile-report/division-district-show', 'ProfileReportController@divisionDistrictShow');

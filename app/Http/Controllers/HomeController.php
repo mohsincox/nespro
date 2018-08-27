@@ -4,6 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use App\User;
+use App\Models\Profile;
+use App\Models\Crm;
+use App\Models\Brand;
+use App\Models\Product;
+use App\Models\Division;
+use App\Models\District;
+use App\Models\PoliceStation;
 
 class HomeController extends Controller
 {
@@ -14,7 +22,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
 
     /**
@@ -24,7 +32,20 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $todayStart = date('Y-m-d 00:00:00');
+        $todayEnd = date('Y-m-d 23:59:59');
+        $userCount = User::count();
+        $profileTotalCount = Profile::count();
+        $profileTodayCount = Profile::whereBetween('updated_at', [$todayStart, $todayEnd])->count();
+        $crmTotalCount = Crm::count();
+        $crmTodayCount = Crm::whereBetween('updated_at', [$todayStart, $todayEnd])->count();
+        $brandCount = Brand::count();
+        $productCount = Product::count();
+        $divisionCount = Division::count();
+        $districtCount = District::count();
+        $policeStationCount = PoliceStation::count();
+
+        return view('home', compact('userCount', 'profileTotalCount', 'profileTodayCount', 'crmTotalCount', 'crmTodayCount', 'brandCount', 'productCount', 'divisionCount', 'districtCount', 'policeStationCount'));
     }
 
     public function test()
