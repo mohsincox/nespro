@@ -66,7 +66,7 @@
                             <a class="nav-link" href="{{ url('/login') }}">Login</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/register') }}">Register</a>
+                            <!-- <a class="nav-link" href="{{ url('/register') }}">Register</a> -->
                         </li>
                     @else
                        <li class="nav-item dropdown">
@@ -87,11 +87,17 @@
                         <li {{ ( Request::is('police-station') || Request::is('police-station/*') ? 'class=active' : '' ) }}>
                             <a class="nav-link" href="{{ url('/police-station') }}">Police Station</a>
                         </li> -->
+                        <li {{ ( Request::is('user') || Request::is('user/*') ? 'class=active' : '' ) }}>
+                            <a class="nav-link" href="{{ url('/user') }}">User</a>
+                        </li>
                         <li {{ ( Request::is('brand') || Request::is('brand/*') ? 'class=active' : '' ) }}>
                             <a class="nav-link" href="{{ url('/brand') }}">Brand</a>
                         </li>
                         <li {{ ( Request::is('product') || Request::is('product/*') ? 'class=active' : '' ) }}>
                             <a class="nav-link" href="{{ url('/product') }}">Product</a>
+                        </li>
+                        <li {{ ( Request::is('quiz') || Request::is('quiz/*') ? 'class=active' : '' ) }}>
+                            <a class="nav-link" href="{{ url('/quiz') }}">Quiz</a>
                         </li>
                         <li {{ ( Request::is('select') || Request::is('select/*') ? 'class=active' : '' ) }}>
                             <a class="nav-link" href="{{ url('/select') }}">Select</a>
@@ -103,37 +109,42 @@
                             <a class="nav-link" href="{{ url('/crm-profile/crm-report-form') }}">CRM Profile</a>
                         </li> -->
                         <li {{ ( Request::is('field-user') || Request::is('field-user/*') ? 'class=active' : '' ) }}>
-                            <a class="nav-link" href="{{ url('/field-user/create') }}" target="_blank">Field User CRM</a>
+                            <a class="nav-link" href="{{ url('/field-user/create') }}">Field User CRM</a>
                         </li>
                         <li {{ ( Request::is('field-user') || Request::is('field-user/*') ? 'class=active' : '' ) }}>
                             <a class="nav-link" href="{{ url('/field-user') }}">Field User Info</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Report </a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="{{ url('/crm-profile/crm-report-form') }}">CRM Report</a>
-                                <a class="dropdown-item" href="{{ url('/profile-report/child-age-form') }}">Child Age Wise Report</a>
-                                <a class="dropdown-item" href="{{ url('/profile-report/division-all-show') }}">All Division Report</a>
-                                <a class="dropdown-item" href="{{ url('/profile-report/division-wise-form') }}">Division Wise Report</a>
-                                <a class="dropdown-item" href="{{ url('/profile-report/district-wise-form') }}">District Wise Report</a>
-                                <a class="dropdown-item" href="{{ url('/profile-report/ps-wise-form') }}">Police Station Wise Report</a>
-                                <a class="dropdown-item" href="{{ url('/crm-profile/brand-wise-form') }}">Brand Wise Report</a>
-                                <a class="dropdown-item" href="{{ url('/crm-profile/brand-and-div-wise-form') }}">Brand and Division Wise Report</a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Download </a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="{{ url('/crm-profile/crm-report-form-excel') }}">CRM Report Download</a>
-                                <a class="dropdown-item" href="{{ url('/profile-report/child-age-form-excel') }}">Child Age Wise Download</a>
-                                <a class="dropdown-item" href="{{ url('/profile-report/division-all-download-excel') }}" onclick="return confirm('Do you want to download?');">All Division Download</a>
-                                <a class="dropdown-item" href="{{ url('/profile-report/division-wise-form-excel') }}">Division Wise Download</a>
-                                <a class="dropdown-item" href="{{ url('/profile-report/district-wise-form-excel') }}">District Wise Download</a>
-                                <a class="dropdown-item" href="{{ url('/profile-report/ps-wise-form-excel') }}">Police Station Wise Download</a>
-                                <a class="dropdown-item" href="{{ url('/crm-profile/brand-wise-form-excel') }}">Brand Wise Download</a>
-                                <a class="dropdown-item" href="{{ url('/crm-profile/brand-and-div-wise-form-excel') }}">Brand and Division Wise Download</a>
-                            </div>
-                        </li>
+                        @can('admin-access')
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Report </a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="{{ url('/crm-profile/crm-report-form') }}">CRM Report</a>
+                                    <a class="dropdown-item" href="{{ url('/profile-report/child-age-form') }}">Child Age Wise Report</a>
+                                    <a class="dropdown-item" href="{{ url('/profile-report/division-all-show') }}">All Division Report</a>
+                                    <a class="dropdown-item" href="{{ url('/profile-report/division-wise-form') }}">Division Wise Report</a>
+                                    <a class="dropdown-item" href="{{ url('/profile-report/district-wise-form') }}">District Wise Report</a>
+                                    <a class="dropdown-item" href="{{ url('/profile-report/ps-wise-form') }}">Police Station Wise Report</a>
+                                    <a class="dropdown-item" href="{{ url('/crm-profile/brand-wise-form') }}">Brand Wise Report</a>
+                                    <a class="dropdown-item" href="{{ url('/crm-profile/brand-and-div-wise-form') }}">Brand and Division Wise Report</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Download </a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="{{ url('/crm-profile/crm-report-form-excel') }}">CRM Report Download</a>
+                                    <a class="dropdown-item" href="{{ url('/profile-report/child-age-form-excel') }}">Child Age Wise Download</a>
+                                    <a class="dropdown-item" href="{{ url('/profile-report/division-all-download-excel') }}" onclick="return confirm('Do you want to download?');">All Division Download</a>
+                                    <a class="dropdown-item" href="{{ url('/profile-report/division-wise-form-excel') }}">Division Wise Download</a>
+                                    <a class="dropdown-item" href="{{ url('/profile-report/district-wise-form-excel') }}">District Wise Download</a>
+                                    <a class="dropdown-item" href="{{ url('/profile-report/ps-wise-form-excel') }}">Police Station Wise Download</a>
+                                    <a class="dropdown-item" href="{{ url('/crm-profile/brand-wise-form-excel') }}">Brand Wise Download</a>
+                                    <a class="dropdown-item" href="{{ url('/crm-profile/brand-and-div-wise-form-excel') }}">Brand and Division Wise Download</a>
+                                </div>
+                            </li>
+                        @endcan
+                       <!--  <li {{ ( Request::is('all-report-form-excel') || Request::is('all-report-form-excel/*') ? 'class=active' : '' ) }}>
+                            <a class="nav-link" href="{{ url('/all-report-form-excel') }}">All Reports</a>
+                        </li> -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                                 {{ Auth::user()->name }}

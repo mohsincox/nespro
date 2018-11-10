@@ -13,48 +13,45 @@ use App\Models\Product;
 use App\Models\Option;
 use App\Models\Profile;
 use App\Models\Crm;
-use Illuminate\Support\Facades\Auth;
 
-class FieldUserController extends Controller
+class CrmProfileController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
-    }
-
-    public function index()
-    {
-    	$crms = Crm::with(['profile', 'profile.division', 'profile.district', 'profile.policeStation', 'brand'])->where('created_by', Auth::id())->orderBy('id', 'desc')->get();
-        return view('field_user.index', compact('crms'));
+        //$this->middleware('auth');
     }
 
     public function create(Request $request)
     {
-        // $phoneNumber=preg_replace('/\D/', '',  $request->phone_number);
-        // if(substr($phoneNumber, 0, 1) == "+" ) $phoneNumber=substr($phoneNumber, 1);
-        // if(substr($phoneNumber, 0, 2) == "88") $phoneNumber=substr($phoneNumber, 2);
+        $phoneNumber=preg_replace('/\D/', '',  $request->phone_number);
+        if(substr($phoneNumber, 0, 1) == "+" ) $phoneNumber=substr($phoneNumber, 1);
+        if(substr($phoneNumber, 0, 2) == "88") $phoneNumber=substr($phoneNumber, 2);
+        //if(substr($phoneNumber, 0, 2) == "00") $phoneNumber=substr($phoneNumber, 2);
+        //if(substr($phoneNumber, 0, 1) == "0" ) $phoneNumber=substr($phoneNumber, 1);
         
-        
-        //$profile = Profile::where('phone_number', $phoneNumber)->first();
-        //$crmLast = Crm::where('phone_number', $phoneNumber)->orderBy('id', 'desc')->first();
+        $profile = Profile::where('phone_number', $phoneNumber)->first();
+        $crmLast = Crm::where('phone_number', $phoneNumber)->orderBy('id', 'desc')->first();
         $agent = $request->agent;
     	$divisionList = Division::pluck('name', 'id');
     	$districtList = District::pluck('name', 'id');
     	$policeStationList = PoliceStation::pluck('name', 'id');
-        //$brandList = Brand::pluck('name', 'id');
+        $brandList = Brand::pluck('name', 'id');
         $brandNameList = Brand::pluck('name', 'name');
-        //$productList = Product::pluck('name', 'id');
+        $productList = Product::pluck('name', 'id');
         $consumerAgeList  = Option::where('select_id', 1)->where('status', 'Active')->pluck('name', 'name');
         $genderList  = Option::where('select_id', 2)->where('status', 'Active')->pluck('name', 'name');
         $professionList  = Option::where('select_id', 3)->where('status', 'Active')->pluck('name', 'name');
         $secList  = Option::where('select_id', 4)->where('status', 'Active')->pluck('name', 'name');
         $numberList  = Option::where('select_id', 5)->where('status', 'Active')->pluck('name', 'name');
-        $actOrCampList  = Option::where('select_id', 12)->where('status', 'Active')->pluck('name', 'name');
-        $productSoldList  = Option::where('select_id', 14)->where('status', 'Active')->pluck('name', 'name');
-        $supVisitedList  = Option::where('select_id', 15)->where('status', 'Active')->pluck('name', 'name');
-        $perContactList  = Option::where('select_id', 16)->where('status', 'Active')->pluck('name', 'name');
+        //$sourceOfKnowingList  = Option::where('select_id', 6)->where('status', 'Active')->pluck('name', 'name');
+        $sourceOfKnowingList  = Option::where('select_id', 6)->where('status', 'Active')->get();
+        $salesForceList  = Option::where('select_id', 7)->where('status', 'Active')->pluck('name', 'name');
+        $CSIList  = Option::where('select_id', 8)->where('status', 'Active')->pluck('name', 'name');
+        $interestedInCrmList  = Option::where('select_id', 9)->where('status', 'Active')->pluck('name', 'name');
+        $reasonsOfCallList  = Option::where('select_id', 10)->where('status', 'Active')->pluck('name', 'name');
+        $callCategoryList  = Option::where('select_id', 11)->where('status', 'Active')->pluck('name', 'name');
         
-    	return view('field_user.create', compact('phoneNumber', 'agent', 'divisionList', 'districtList', 'policeStationList', 'brandNameList', 'consumerAgeList', 'genderList', 'professionList', 'secList', 'numberList', 'actOrCampList', 'productSoldList', 'supVisitedList', 'perContactList'));
+    	return view('crm_profile.create', compact('phoneNumber', 'agent', 'divisionList', 'districtList', 'policeStationList', 'brandList', 'brandNameList', 'productList','consumerAgeList', 'genderList', 'professionList', 'secList', 'numberList', 'sourceOfKnowingList', 'salesForceList', 'CSIList', 'interestedInCrmList', 'reasonsOfCallList', 'callCategoryList', 'profile', 'crmLast'));
     }
 
     public function getYMD(Request $request)
@@ -138,34 +135,26 @@ class FieldUserController extends Controller
             //print_r (explode(", ",$strPreferedBrand));
             $profile->prefered_brand = $strPreferedBrand;
         }
-        $profile->activity_campaign_name = $request->activity_campaign_name;
-        $profile->created_by = Auth::id();
         $profile->save();
 
         $crm = new Crm;
         $crm->profile_id = $profile->id;
         $crm->phone_number = $profile->phone_number;
-        //$crm->brand_id = $request->brand_id;
-        //$crm->product = $request->product;
+        $crm->brand_id = $request->brand_id;
+        $crm->product = $request->product;
         $crm->competition_brand_usage = $request->competition_brand_usage;
         $crm->activity_campaign_name = $request->activity_campaign_name;
-        $crm->supervisor_name = $request->supervisor_name;
-        $crm->husband_name = $request->husband_name;
-        $crm->product_sold = $request->product_sold;
-        $crm->supervisor_visited = $request->supervisor_visited;
-        $crm->permission_contact = $request->permission_contact;
-        // $crm->source_of_knowing = $request->source_of_knowing;
-        // $crm->ccid = $request->ccid;
-        // $crm->sales_force = $request->sales_force;
-        // $crm->consumer_satisfaction_index = $request->consumer_satisfaction_index;
-        // $crm->interested_in_crm = $request->interested_in_crm;
-        // $crm->reasons_of_call = $request->reasons_of_call;
-        // $crm->call_category = $request->call_category;
-        // $crm->verbatim = $request->verbatim;
-        $crm->created_by = Auth::id();
+        $crm->source_of_knowing = $request->source_of_knowing;
+        $crm->ccid = $request->ccid;
+        $crm->sales_force = $request->sales_force;
+        $crm->consumer_satisfaction_index = $request->consumer_satisfaction_index;
+        $crm->interested_in_crm = $request->interested_in_crm;
+        $crm->reasons_of_call = $request->reasons_of_call;
+        $crm->call_category = $request->call_category;
+        $crm->verbatim = $request->verbatim;
         $crm->save();
 
         flash()->success($profile->phone_number.' Profile & CRM created successfully');
         return redirect()->back();
-    }
+    }    
 }

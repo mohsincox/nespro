@@ -32,6 +32,9 @@ class CreateProfilesTable extends Migration
             $table->date('child2_DOB')->nullable();
             $table->date('child3_DOB')->nullable();
             $table->string('prefered_brand')->nullable();
+            $table->integer('brand_id')->unsigned()->nullable();
+            $table->string('product', 100)->nullable();
+            $table->string('activity_campaign_name', 150)->nullable();
             $table->integer('created_by')->unsigned()->nullable();
             $table->integer('updated_by')->unsigned()->nullable();
             $table->integer('deleted_by')->unsigned()->nullable();

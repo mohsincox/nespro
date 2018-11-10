@@ -201,6 +201,98 @@ class ProfileReportController extends Controller
         })->export($type);
     }
 
+    public function childAgeAndDateWiseShowExcel(Request $request)
+    {
+        $startDate = $request->start_date.' 00:00:00';
+        $endDate = $request->end_date.' 23:59:59';
+        $fromYear = $request->from_year;
+        $fromMonth = $request->from_month;
+        $toYear = $request->to_year;
+        $toMonth = $request->to_month;
+        $type = $request->type;
+
+        $fromYearToDay = 365 * $fromYear;
+        $fromMonthToDay = 31 * $fromMonth;
+        $fromTotalDay = $fromYearToDay + $fromMonthToDay;
+        $fromDate = date('Y-m-d',strtotime(date("Y-m-d", time()) . " - ".$fromTotalDay." day"));
+
+        $toYearToDay = 365 * $toYear;
+        $toMonthToDay = 30 * $toMonth;
+        $toTotalDay = $toYearToDay + $toMonthToDay;
+        $toDate = date('Y-m-d',strtotime(date("Y-m-d", time()) . " - ".$toTotalDay." day"));
+       
+        Excel::create('child'.$request->start_date.'to'.$request->end_date, function($excel) use ($toDate,  $fromDate, $type, $startDate, $endDate) {
+
+            $excel->sheet('Sheet1', function($sheet) use ($toDate,  $fromDate, $type, $startDate, $endDate) {
+
+                //Note: $fromDate is Greater than $toDate
+                $profiles = Profile::with(['division', 'district', 'policeStation'])
+                                ->whereBetween('updated_at', [$startDate, $endDate])
+                                ->where(function ($query) use ($toDate, $fromDate) {
+                                    $query->whereBetween('child1_DOB', [$toDate, $fromDate])
+                                    ->orWhereBetween('child2_DOB', [$toDate, $fromDate])
+                                    ->orWhereBetween('child3_DOB', [$toDate, $fromDate]);   
+                                })
+                                ->get();
+                                
+                $arr =array();
+                foreach($profiles as $profile) {
+                    if (isset($profile->division->name)) {
+                        $division = $profile->division->name;
+                    } else {
+                        $division = null;
+                    }
+                    if (isset($profile->district->name)) {
+                        $district = $profile->district->name;
+                    } else {
+                        $district = null;
+                    }
+                    if (isset($profile->policeStation->name)) {
+                        $policeStation = $profile->policeStation->name;
+                    } else {
+                        $policeStation = null;
+                    }
+                    if ($profile->child1_DOB == null) {
+                        $child1Age = null;
+                    } else {
+                        $child1_DOB = $profile->child1_DOB;
+                        $interval1 = date_diff(date_create(), date_create($child1_DOB));
+                        $child1Age = $interval1->format("%yy, %mm, %dd");
+                    }
+                    
+                    if ($profile->child2_DOB == null) {
+                        $child2Age = null;
+                    } else {
+                        $child2_DOB = $profile->child2_DOB;
+                        $interval2 = date_diff(date_create(), date_create($child2_DOB));
+                        $child2Age = $interval2->format("%yy, %mm, %dd");
+                    }
+
+                    if ($profile->child3_DOB == null) {
+                        $child3Age = null;
+                    } else {
+                        $child3_DOB = $profile->child3_DOB;
+                        $interval3 = date_diff(date_create(), date_create($child3_DOB));
+                        $child3Age = $interval3->format("%yy, %mm, %dd");
+                    }
+                    
+
+                    $data =  array($profile->id, $profile->phone_number,  $profile->consumer_name, $profile->consumer_age, $profile->consumer_gender, $division, $district, $policeStation, $profile->address, $profile->alternative_phone_number, $profile->profession, $profile->sec, $profile->number_of_child, $profile->total_family_member, $child1Age, $child2Age, $child3Age, $profile->prefered_brand, $profile->agent, $profile->updated_at);
+                    array_push($arr, $data);
+                }
+                
+                //set the titles
+                $sheet->fromArray($arr,null,'A1',false,false)->prependRow(array(
+                        'Id', 'Con Phone Number', 'Con Name', 'Con Age', 'Con Gender', 'Division', 'District', 'Police Station', 'Address', 'Alt. Ph No', 'Profession', 'SEC', 'Child No.', 'Family Mem.', 'Child1 Age', 'Child2 Age', 'Child3 Age', 'Prefered Brand', 'Agent', 'Created 0r Updated At'
+                    )
+
+                );
+
+            });
+
+        })->export($type);
+    }
+
     public function divisionAllShow(Request $request)
     {   
         
@@ -320,6 +412,77 @@ class ProfileReportController extends Controller
             $excel->sheet('Sheet1', function($sheet) use ($divisionId, $type) {
 
                 $profiles = Profile::with(['division', 'district', 'policeStation'])->where('division_id', $divisionId)->get();
+
+                $arr =array();
+                foreach($profiles as $profile) {
+                    if (isset($profile->division->name)) {
+                        $division = $profile->division->name;
+                    } else {
+                        $division = null;
+                    }
+                    if (isset($profile->district->name)) {
+                        $district = $profile->district->name;
+                    } else {
+                        $district = null;
+                    }
+                    if (isset($profile->policeStation->name)) {
+                        $policeStation = $profile->policeStation->name;
+                    } else {
+                        $policeStation = null;
+                    }
+                    if ($profile->child1_DOB == null) {
+                        $child1Age = null;
+                    } else {
+                        $child1_DOB = $profile->child1_DOB;
+                        $interval1 = date_diff(date_create(), date_create($child1_DOB));
+                        $child1Age = $interval1->format("%yy, %mm, %dd");
+                    }
+                    
+                    if ($profile->child2_DOB == null) {
+                        $child2Age = null;
+                    } else {
+                        $child2_DOB = $profile->child2_DOB;
+                        $interval2 = date_diff(date_create(), date_create($child2_DOB));
+                        $child2Age = $interval2->format("%yy, %mm, %dd");
+                    }
+
+                    if ($profile->child3_DOB == null) {
+                        $child3Age = null;
+                    } else {
+                        $child3_DOB = $profile->child3_DOB;
+                        $interval3 = date_diff(date_create(), date_create($child3_DOB));
+                        $child3Age = $interval3->format("%yy, %mm, %dd");
+                    }
+
+                    $data =  array($profile->id, $profile->phone_number,  $profile->consumer_name, $profile->consumer_age, $profile->consumer_gender, $division, $district, $policeStation, $profile->address, $profile->alternative_phone_number, $profile->profession, $profile->sec, $profile->number_of_child, $profile->total_family_member, $child1Age, $child2Age, $child3Age, $profile->prefered_brand, $profile->agent, $profile->updated_at);
+                    array_push($arr, $data);
+                }
+                
+                //set the titles
+                $sheet->fromArray($arr,null,'A1',false,false)->prependRow(array(
+                        'Id', 'Con Phone Number', 'Con Name', 'Con Age', 'Con Gender', 'Division', 'District', 'Police Station', 'Address', 'Alt. Ph No', 'Profession', 'SEC', 'Child No.', 'Family Mem.', 'Child1 Age', 'Child2 Age', 'Child3 Age', 'Prefered Brand', 'Agent', 'Created At'
+                    )
+
+                );
+
+            });
+
+        })->export($type);
+    }
+
+    public function divisionAndDateWiseShowExcel(Request $request)
+    {
+        // return $request->all();
+        $startDate = $request->start_date.' 00:00:00';
+        $endDate = $request->end_date.' 23:59:59';
+        $divisionId = $request->division_id;
+        $type = $request->type;
+       
+        Excel::create('divisionWise'.$request->start_date.'to'.$request->end_date, function($excel) use ($divisionId, $type, $startDate, $endDate) {
+
+            $excel->sheet('Sheet1', function($sheet) use ($divisionId, $type, $startDate, $endDate) {
+
+                $profiles = Profile::with(['division', 'district', 'policeStation'])->where('division_id', $divisionId)->whereBetween('updated_at', [$startDate, $endDate])->get();
 
                 $arr =array();
                 foreach($profiles as $profile) {

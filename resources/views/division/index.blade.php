@@ -9,9 +9,11 @@
 		        		<h3><i class="fa fa-list-ul"></i> List of Division Names</h3>
 		        </div>
 	        	<div class="col-sm-5">
-	        		<a href="{{ url('division/create') }}" class="btn btn-outline-primary pull-right">
-		                <i class="fa fa-plus"></i> Create <b>Division Name</b>
-		            </a>
+	        		@can('admin-access')
+		        		<a href="{{ url('division/create') }}" class="btn btn-outline-primary pull-right">
+			                <i class="fa fa-plus"></i> Create <b>Division Name</b>
+			            </a>
+		            @endcan
 		    	</div>
 	        </div>
 	        <div class="card">
@@ -26,9 +28,9 @@
 	                            <th>SL</th>
 	                            <th>Division Names</th>
 	                            <!-- <th>View</th> -->
-	                            
+	                            @can('admin-access')
 	                            	<th>Edit</th>
-	                            
+	                            @endcan
 	                            <!-- <th>Delete</th> -->
 	                        </tr>
 	                    </thead>
@@ -41,9 +43,9 @@
 	                            <td>{{ ++$i }}</td>
 	                            <td>{{ $division->name }}</td>
 	                            <!-- <td>{!! Html::link("result/$division->id",' View', ['class' => 'fa fa-eye btn btn-success btn-xs']) !!}</td> -->
-	                            
+	                            @can('admin-access')
 	                            	<td>{!! Html::link("division/$division->id/edit",' Edit', ['class' => 'fa fa-edit btn btn-outline-success btn-xs']) !!}</td>
-	                            
+	                            @endcan
 	                            <!-- <td><a class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal-{{ $division->id }}">
 	                                    <i class="fa fa-trash"></i> Delete
 	                                </a>

@@ -13,6 +13,7 @@ use App\Models\Product;
 use App\Models\Option;
 use App\Models\Profile;
 use App\Models\Crm;
+use App\Models\Quiz;
 
 class CrmProfileController extends Controller
 {
@@ -38,6 +39,7 @@ class CrmProfileController extends Controller
         $brandList = Brand::pluck('name', 'id');
         $brandNameList = Brand::pluck('name', 'name');
         $productList = Product::pluck('name', 'id');
+        $quizList  = Quiz::where('status', 'Active')->pluck('name', 'name');
         $consumerAgeList  = Option::where('select_id', 1)->where('status', 'Active')->pluck('name', 'name');
         $genderList  = Option::where('select_id', 2)->where('status', 'Active')->pluck('name', 'name');
         $professionList  = Option::where('select_id', 3)->where('status', 'Active')->pluck('name', 'name');
@@ -50,8 +52,11 @@ class CrmProfileController extends Controller
         $interestedInCrmList  = Option::where('select_id', 9)->where('status', 'Active')->pluck('name', 'name');
         $reasonsOfCallList  = Option::where('select_id', 10)->where('status', 'Active')->pluck('name', 'name');
         $callCategoryList  = Option::where('select_id', 11)->where('status', 'Active')->pluck('name', 'name');
+        $actOrCampList  = Option::where('select_id', 12)->where('status', 'Active')->pluck('name', 'name');
+        $quizAnsList  = Option::where('select_id', 13)->where('status', 'Active')->pluck('name', 'name');
+        $crms = Crm::with(['brand'])->where('phone_number', $phoneNumber)->orderBy('id', 'desc')->get();
         
-    	return view('crm_profile.create', compact('phoneNumber', 'agent', 'divisionList', 'districtList', 'policeStationList', 'brandList', 'brandNameList', 'productList','consumerAgeList', 'genderList', 'professionList', 'secList', 'numberList', 'sourceOfKnowingList', 'salesForceList', 'CSIList', 'interestedInCrmList', 'reasonsOfCallList', 'callCategoryList', 'profile', 'crmLast'));
+    	return view('crm_profile.create', compact('phoneNumber', 'agent', 'divisionList', 'districtList', 'policeStationList', 'brandList', 'brandNameList', 'productList', 'actOrCampList', 'quizList', 'consumerAgeList', 'genderList', 'professionList', 'secList', 'numberList', 'sourceOfKnowingList', 'salesForceList', 'CSIList', 'interestedInCrmList', 'reasonsOfCallList', 'callCategoryList', 'quizAnsList', 'profile', 'crmLast', 'crms'));
     }
 
     public function getYMD(Request $request)
@@ -62,6 +67,25 @@ class CrmProfileController extends Controller
         //return view('crm_profile.get_ymd', compact('dateOfBirth'));
     }
 
+    // For address
+    public function getDistrict(Request $request)
+    {
+        
+        $districts = District::where('division_id', $request->division_id)->pluck('name', 'id');
+
+        return response()->json($districts);
+
+    }
+
+    public function getPoliceStation(Request $request)
+    {   
+        $policeStations = PoliceStation::where('district_id', $request->district_id)->pluck('name', 'id');
+
+        return response()->json($policeStations);
+    }
+    // end address
+
+
     public function divisionDistrictShow(Request $request)
     {   
         $districts = District::where('division_id', $request->division_id)->get();
@@ -70,7 +94,7 @@ class CrmProfileController extends Controller
         }
         return view('crm_profile.division_district', compact('divWiseDistrictList'));
     }
-
+    
     public function districtPsShow(Request $request)
     {   
         $policeStations = PoliceStation::where('district_id', $request->district_id)->get();
@@ -84,7 +108,7 @@ class CrmProfileController extends Controller
     {   
         $products = Product::where('brand_id', $request->brand_id)->get();
         foreach ($products as $product) {
-            $brandWiseProductList['Product: '.$product->name.', SKU:'.$product->sku] = $product->name.', '.$product->sku;
+            $brandWiseProductList['Product: '.$product->name.', SKU: '.$product->sku] = $product->name.', '.$product->sku;
         }
         return view('crm_profile.brand_product', compact('brandWiseProductList'));
     }
@@ -135,11 +159,15 @@ class CrmProfileController extends Controller
             //print_r (explode(", ",$strPreferedBrand));
             $profile->prefered_brand = $strPreferedBrand;
         }
+        $profile->brand_id = $request->brand_id;
+        $profile->product = $request->product;
+        $profile->activity_campaign_name = $request->activity_campaign_name;
         $profile->save();
 
         $crm = new Crm;
         $crm->profile_id = $profile->id;
         $crm->phone_number = $profile->phone_number;
+        $crm->agent = $profile->agent;
         $crm->brand_id = $request->brand_id;
         $crm->product = $request->product;
         $crm->competition_brand_usage = $request->competition_brand_usage;
@@ -152,6 +180,9 @@ class CrmProfileController extends Controller
         $crm->reasons_of_call = $request->reasons_of_call;
         $crm->call_category = $request->call_category;
         $crm->verbatim = $request->verbatim;
+        $crm->quiz_question = $request->quiz_question;
+        $crm->quiz_ans_given = $request->quiz_ans_given;
+        $crm->quiz_ans_status = $request->quiz_ans_status;
         $crm->save();
 
         flash()->success($profile->phone_number.' Profile & CRM created successfully');

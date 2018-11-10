@@ -36,15 +36,9 @@ Route::get('/brand', 'BrandController@index');
 
 Route::get('/product', 'ProductController@index');
 
-Route::get('/quiz', 'QuizController@index');
-
 Route::get('/select', 'SelectController@index');
 
 Route::get('/option', 'OptionController@index');
-
-// route for address
-Route::get('/crm-profile/get-district', 'CrmProfileController@getDistrict');
-Route::get('/crm-profile/get-police-station', 'CrmProfileController@getPoliceStation');
 
 Route::get('/crm-profile/division-district-show', 'CrmProfileController@divisionDistrictShow');
 Route::get('/crm-profile/district-ps-show', 'CrmProfileController@districtPsShow');
@@ -89,11 +83,6 @@ Route::group([ 'middleware' => 'can:admin-access'], function () {
 	Route::post('/product', 'ProductController@store');
 	Route::get('/product/{id}/edit', 'ProductController@edit');
 	Route::put('/product/{id}', 'ProductController@update');
-
-	Route::get('/quiz/create', 'QuizController@create');
-	Route::post('/quiz', 'QuizController@store');
-	Route::get('/quiz/{id}/edit', 'QuizController@edit');
-	Route::put('/quiz/{id}', 'QuizController@update');
 
 	Route::get('/select/create', 'SelectController@create');
 	Route::post('/select', 'SelectController@store');
@@ -156,8 +145,5 @@ Route::group([ 'middleware' => 'can:admin-access'], function () {
 	Route::post('/profile-report/ps-wise-show', 'ProfileReportController@psWiseShow');
 	Route::get('/profile-report/ps-wise-form-excel', 'ProfileReportController@psWiseFormExcel');
 	Route::post('/profile-report/ps-wise-show-excel', 'ProfileReportController@psWiseShowExcel');
-
-	Route::get('/upload-excel', 'UploadController@create');
-	Route::post('/upload-srore', 'UploadController@store');
 
 });

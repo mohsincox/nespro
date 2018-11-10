@@ -9,9 +9,11 @@
 		        		<h3><i class="fa fa-list-ul"></i> List of Products</h3>
 		        </div>
 	        	<div class="col-sm-5">
-	        		<a href="{{ url('product/create') }}" class="btn btn-outline-primary pull-right">
-	                	<i class="fa fa-plus"></i> Create <b>Prodict</b>
-	            	</a>
+	        		@can('admin-access')
+		        		<a href="{{ url('product/create') }}" class="btn btn-outline-primary pull-right">
+		                	<i class="fa fa-plus"></i> Create <b>Prodict</b>
+		            	</a>
+	            	@endcan
 		    	</div>
 	        </div>
 	        <div class="card">
@@ -27,7 +29,9 @@
 		                            <th>Product Name</th>
 		                            <th>SKU</th>
 		                            <th>Brand Name</th>
-		                            <th>Edit</th>
+		                            @can('admin-access')
+		                            	<th>Edit</th>
+		                            @endcan
 		                        </tr>
 		                    </thead>
 		                    <tbody>
@@ -40,7 +44,9 @@
 		                            <td>{{ $product->name }}</td>
 		                            <td>{{ $product->sku }}</td>
 		                            <td>{{ $product->brand->name }}</td>
-		                            <td>{!! Html::link("product/$product->id/edit",' Edit', ['class' => 'fa fa-edit btn btn-outline-success btn-xs']) !!}</td>  
+		                            @can('admin-access')
+		                            	<td>{!! Html::link("product/$product->id/edit",' Edit', ['class' => 'fa fa-edit btn btn-outline-success btn-xs']) !!}</td>
+		                            @endcan 
 		                        </tr>
 		                    @endforeach
 		                    </tbody>

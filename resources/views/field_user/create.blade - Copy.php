@@ -20,7 +20,7 @@
                             <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
                                 <div class="input-group mb-2 input-group-sm">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text bg-primary text-white">Consumer's Phone No. <span style="color: red;"> &nbsp; * </span></span>
+                                        <span class="input-group-text bg-success text-white">Consumer's Phone No.</span>
                                     </div>
                                     {!! Form::text('phone_number', null, ['class' => 'form-control', 'placeholder' => 'Enter Consumer Phone Number', 'autocomplete' => 'off', 'onkeypress' => 'return event.charCode >= 48 && event.charCode <= 57', 'required' => 'required']) !!}
                                 </div>
@@ -28,7 +28,7 @@
                             <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
                                 <div class="input-group mb-2 input-group-sm">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text bg-primary text-white">Field User Name <span style="color: red;"> &nbsp; * </span></span>
+                                        <span class="input-group-text bg-success text-white">Field User Name</span>
                                     </div>
                                     {!! Form::text('', Auth::user()->name, ['class' => 'form-control', 'placeholder' => 'Enter Consumer Name', 'autocomplete' => 'off', 'disabled' => 'disabled']) !!}
                                 </div>
@@ -39,7 +39,7 @@
                             <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
                                 <div class="input-group mb-2 input-group-sm">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text bg-primary text-white">Consumer's Name</span>
+                                        <span class="input-group-text bg-success text-white">Consumer's Name</span>
                                     </div>
                                     {!! Form::text('consumer_name', null, ['class' => 'form-control', 'placeholder' => 'Enter Consumer Name', 'autocomplete' => 'off']) !!}
                                 </div>
@@ -47,7 +47,7 @@
                             <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
                                 <div class="input-group mb-2 input-group-sm">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text bg-primary text-white">Consumer's Age</span>
+                                        <span class="input-group-text bg-success text-white">Consumer's Age</span>
                                     </div>
                                     {!! Form::select('consumer_age', $consumerAgeList, null, ['class' => 'form-control','placeholder' => 'Select Consumer Age', 'id' => 'consumer_age']) !!}
                                 </div>
@@ -58,7 +58,7 @@
                         	<div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
                                 <div class="input-group mb-2 input-group-sm">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text bg-primary text-white">Consumer's Gender</span>
+                                        <span class="input-group-text bg-success text-white">Consumer's Gender</span>
                                     </div>
                                     {!! Form::select('consumer_gender', $genderList, null, ['class' => 'form-control','placeholder' => 'Select Consumer Gender']) !!}
                                 </div>
@@ -66,9 +66,9 @@
                             <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
                                 <div class="input-group mb-2 input-group-sm">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text bg-primary text-white">Division</span>
+                                        <span class="input-group-text bg-success text-white">Division</span>
                                     </div>
-                                    {!! Form::select('division_id', $divisionList, null, ['class' => 'form-control','placeholder' => 'Select Division', 'id' => 'division']) !!}
+                                    {!! Form::select('division_id', $divisionList, null, ['class' => 'form-control','placeholder' => 'Select Division', 'id' => 'division_id']) !!}
                                 </div>
                             </div>
                         </div>
@@ -77,18 +77,26 @@
                         	<div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
                                 <div class="input-group mb-2 input-group-sm">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text bg-primary text-white">District</span>
+                                        <span class="input-group-text bg-success text-white">District</span>
                                     </div>
-                                    	{!! Form::select('district_id', [], null, ['class' => 'form-control', 'placeholder' => 'Select District Name', 'id' => 'district']) !!}
+                                    @if(isset($profile))
+                                    	{!! Form::select('district_id', $districtList, null, ['class' => 'form-control', 'placeholder' => 'Select District Name', 'id' => 'district_id_disable']) !!}
+                                    @else
+                                    	{!! Form::select('district_id', [], null, ['class' => 'form-control', 'placeholder' => 'Select District Name', 'id' => 'hide_district']) !!}
+                                    @endif
                                     <span id="division_district_show"></span>
                                 </div>
                             </div>
                             <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
                                 <div class="input-group mb-2 input-group-sm">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text bg-primary text-white">Thana</span>
+                                        <span class="input-group-text bg-success text-white">Police Station</span>
                                     </div>
-                                    	{!! Form::select('police_station_id', [], null, ['class' => 'form-control','placeholder' => 'Select Police Station', 'id' => 'police_station']) !!}
+                                    @if(isset($profile))
+                                    	{!! Form::select('police_station_id', $policeStationList, null, ['class' => 'form-control','placeholder' => 'Select Police Station', 'id' => 'ps_id_disable']) !!}
+                                    @else
+                                    	{!! Form::select('police_station_id', [], null, ['class' => 'form-control','placeholder' => 'Select Police Station', 'id' => 'hide_ps']) !!}
+                                    @endif
                                     <span id="district_ps_show"></span>
                                 </div>
                             </div>
@@ -98,7 +106,7 @@
                             <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
                                 <div class="input-group mb-2 input-group-sm">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text bg-primary text-white">Address</span>
+                                        <span class="input-group-text bg-success text-white">Address</span>
                                     </div>
                                     {!! Form::text('address', null, ['class' => 'form-control', 'placeholder' => 'Enter Address', 'autocomplete' => 'off']) !!}
                                 </div>
@@ -106,7 +114,7 @@
                             <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
                                 <div class="input-group mb-2 input-group-sm">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text bg-primary text-white">Alternative Phone</span>
+                                        <span class="input-group-text bg-success text-white">Alternative Phone</span>
                                     </div>
                                     {!! Form::text('alternative_phone_number', null, ['class' => 'form-control', 'placeholder' => 'Enter Alternative Phone', 'autocomplete' => 'off']) !!}
                                 </div>
@@ -117,7 +125,7 @@
                         	<div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
                                 <div class="input-group mb-2 input-group-sm">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text bg-primary text-white">Profession</span>
+                                        <span class="input-group-text bg-success text-white">Profession</span>
                                     </div>
                                     {!! Form::select('profession', $professionList, null, ['class' => 'form-control','placeholder' => 'Select Profession']) !!}
                                 </div>
@@ -125,7 +133,7 @@
                             <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
                                 <div class="input-group mb-2 input-group-sm">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text bg-primary text-white">SEC</span>
+                                        <span class="input-group-text bg-success text-white">SEC</span>
                                     </div>
                                     {!! Form::select('sec', $secList, null, ['class' => 'form-control','placeholder' => 'Select SEC']) !!}
                                 </div>
@@ -136,7 +144,7 @@
                         	<div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
                                 <div class="input-group mb-2 input-group-sm">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text bg-primary text-white">Number of Child</span>
+                                        <span class="input-group-text bg-success text-white">Number of Child</span>
                                     </div>
                                     {!! Form::select('number_of_child', $numberList, null, ['class' => 'form-control','placeholder' => 'Select Child No.']) !!}
                                 </div>
@@ -144,7 +152,7 @@
                             <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
                                 <div class="input-group mb-2 input-group-sm">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text bg-primary text-white">Family Members</span>
+                                        <span class="input-group-text bg-success text-white">Family Members</span>
                                     </div>
                                     {!! Form::select('total_family_member', $numberList, null, ['class' => 'form-control','placeholder' => 'Total Members']) !!}
                                 </div>
@@ -170,7 +178,7 @@
                             <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
                                 <div class="input-group mb-2 input-group-sm">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text bg-primary text-white">Child1 DOB</span>
+                                        <span class="input-group-text bg-success text-white">Child1 DOB</span>
                                     </div>
                                     {!! Form::text('child1_DOB', null, ['class' => 'form-control',  'placeholder' => 'Select Child2 Date of Birth', 'autocomplete' => 'off', 'id' => 'child1_DOB', 'readonly' => 'readonly']) !!}
                                     <span id="child1_DOB_show"></span>
@@ -179,7 +187,7 @@
                             <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
                                 <div class="input-group mb-2 input-group-sm">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text bg-primary text-white">Child2 DOB</span>
+                                        <span class="input-group-text bg-success text-white">Child2 DOB</span>
                                     </div>
                                     {!! Form::text('child2_DOB', null, ['class' => 'form-control', 'placeholder' => 'Select Child2 Date of Birth', 'autocomplete' => 'off', 'id' => 'child2_DOB', 'readonly' => 'readonly']) !!}
                                     <span id="child2_DOB_show"></span>
@@ -191,7 +199,7 @@
                         	<div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
                                 <div class="input-group mb-2 input-group-sm">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text bg-primary text-white">Child3 DOB</span>
+                                        <span class="input-group-text bg-success text-white">Child3 DOB</span>
                                     </div>
                                     {!! Form::text('child3_DOB', null, ['class' => 'form-control', 'placeholder' => 'Select Child3 Date of Birth', 'autocomplete' => 'off', 'id' => 'child3_DOB', 'readonly' => 'readonly']) !!}
                                     <span id="child3_DOB_show"></span>
@@ -200,7 +208,7 @@
                             <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
                                 <div class="input-group mb-2 input-group-sm">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text bg-primary text-white">Prefered Brand</span>
+                                        <span class="input-group-text bg-success text-white">Prefered Brand</span>
                                     </div>
                                     @if(isset($profile))
 	                                    <?php
@@ -214,16 +222,16 @@
                             </div>
                         </div>
 
-                        <!-- <div class="row">
+                        <div class="row">
                             
                             
                         </div>
- -->
+
                         <div class="row">
                             <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
                                 <div class="input-group mb-2 input-group-sm">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text bg-primary text-white">Comp.Brand Usage</span>
+                                        <span class="input-group-text bg-success text-white">Comp.Brand Usage</span>
                                     </div>
 	                                {!! Form::text('competition_brand_usage', null, ['class' => 'form-control', 'placeholder' => 'Competition Brand Usage', 'autocomplete' => 'off']) !!}
                                 </div>
@@ -231,55 +239,9 @@
                             <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
                                 <div class="input-group mb-2 input-group-sm">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text bg-primary text-white">Acti./Camp.Name</span>
+                                        <span class="input-group-text bg-success text-white">Acti./Camp.Name</span>
                                     </div>
-	                                {!! Form::select('activity_campaign_name', $actOrCampList, null, ['class' => 'form-control', 'placeholder' => 'Select Acti./Camp.Name']) !!}
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
-                                <div class="input-group mb-2 input-group-sm">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text bg-primary text-white">Supervisor Name</span>
-                                    </div>
-                                    {!! Form::text('supervisor_name', null, ['class' => 'form-control', 'placeholder' => 'Enter Supervisor Name', 'autocomplete' => 'off']) !!}
-                                </div>
-                            </div>
-                            <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
-                                <div class="input-group mb-2 input-group-sm">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text bg-primary text-white">Husband Name</span>
-                                    </div>
-                                    {!! Form::text('husband_name', null, ['class' => 'form-control', 'placeholder' => 'Husband Name', 'autocomplete' => 'off']) !!}
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm-4" style="padding-left: 10px; padding-right: 10px;">
-                                <div class="input-group mb-2 input-group-sm">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text bg-primary text-white">Product Sold</span>
-                                    </div>
-                                    {!! Form::select('product_sold', $productSoldList, null, ['class' => 'form-control', 'placeholder' => 'Select Product Sold']) !!}
-                                </div>
-                            </div>
-                            <div class="col-sm-4" style="padding-left: 10px; padding-right: 10px;">
-                                <div class="input-group mb-2 input-group-sm">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text bg-primary text-white">Sup. visited</span>
-                                    </div>
-                                    {!! Form::select('supervisor_visited', $supVisitedList, null, ['class' => 'form-control', 'placeholder' => 'Select Supervisor visited']) !!}
-                                </div>
-                            </div>
-                            <div class="col-sm-4" style="padding-left: 10px; padding-right: 10px;">
-                                <div class="input-group mb-2 input-group-sm">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text bg-primary text-white">Permission Contact</span>
-                                    </div>
-                                    {!! Form::select('permission_contact', $perContactList, null, ['class' => 'form-control', 'placeholder' => 'Select Further Contact']) !!}
+	                                {!! Form::text('activity_campaign_name', null, ['class' => 'form-control', 'placeholder' => 'Activity/Campaign Name', 'autocomplete' => 'off']) !!}
                                 </div>
                             </div>
                         </div>
@@ -320,13 +282,13 @@
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.2/themes/mint-choc/jquery-ui.css">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
 <style type="text/css">
-/*        .btn-group-xs > .btn, .btn-xs {
+        .btn-group-xs > .btn, .btn-xs {
             padding  : .25rem .4rem;
             font-size  : .875rem;
             line-height  : .5;
             border-radius : .2rem;
         }
-*/
+
         .alert {
             padding: 0px; 
             margin-bottom: 0px; 
@@ -350,8 +312,6 @@
 	<script src="https://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <script>
-        var baseUrl = "{{ url('/') }}";
-
         $( function() {
         	var child1DOB = $("#child1_DOB_from_db").text();
         	var child2DOB = $("#child2_DOB_from_db").text();
@@ -400,66 +360,20 @@
             });
         });
 
-  //       $(document).ready(function(){
-		//     $("#division_id").change(function(){
-		//         var divisionId = $("#division_id").val();
-		//         var url = '{{ url("/crm-profile/division-district-show")}}';
-		//         $.get(url+'?division_id='+divisionId, function (data) {
-		//         	$("#hide_district").hide();
-		//         	$("#district_id_disable").hide();
-		//         	$("#ps_id_disable").hide();
-		//         	$("#hide_ps").hide();
-	 //            	$('#division_district_show').html(data);
-	 //            	$('#district_ps_show').html('<select class="form-control" name="police_station_id"><option value="">Select Police Station</option></select>');
-	 //        	});
-		//     });
-		// });
-
-        $(function() {
-            $('#division').change(function() {
-                var divisionId = $(this).val();
-                getDistrict(divisionId);
-            });
-
-            $('#district').change(function() {
-                var districtId = $(this).val();
-                getPoliceStation(districtId);
-            });
-        });
-
-        function getDistrict(divisionId) {
-            
-            resetField('district', 'Select District');
-
-            resetField('police_station', 'Select Police Station');
-
-            $.get(baseUrl+'/crm-profile/get-district?division_id='+divisionId, function (response) {
-
-                $.map( response, function( name, id ) {
-                    $('#district').append('<option value="'+ id +'">' + name + '</option>');
-                });
-                
-            });
-        }
-
-        function getPoliceStation(districtId) {
-            
-            resetField('police_station', 'Select Police Station');
-
-            $.get(baseUrl+'/crm-profile/get-police-station?district_id='+districtId, function (response) {
-                
-                $.map( response, function( name, id ) {
-                    $('#police_station').append('<option value="'+ id +'">' + name + '</option>');
-                });
-
-            });
-        }
-
-        function resetField(id, placeholder) {
-            $('#' + id).empty();
-            $('#' + id).append('<option value="">'+ placeholder +'</option>');
-        }
-
+        $(document).ready(function(){
+		    $("#division_id").change(function(){
+		        var divisionId = $("#division_id").val();
+		        var url = '{{ url("/crm-profile/division-district-show")}}';
+		        $.get(url+'?division_id='+divisionId, function (data) {
+		        	$("#hide_district").hide();
+		        	$("#district_id_disable").hide();
+		        	$("#ps_id_disable").hide();
+		        	$("#hide_ps").hide();
+	            	$('#division_district_show').html(data);
+	            	$('#district_ps_show').html('<select class="form-control" name="police_station_id"><option value="">Select Police Station</option></select>');
+	        	});
+		    });
+		});
 
 		$(document).ready(function() {
     		$('.js-example-basic-multiple').select2();
@@ -476,7 +390,7 @@
 		    });
 		});
 
-		// $('#district_id_disable option:not(:selected)').prop('disabled', true);
-		// $('#ps_id_disable option:not(:selected)').prop('disabled', true);
+		$('#district_id_disable option:not(:selected)').prop('disabled', true);
+		$('#ps_id_disable option:not(:selected)').prop('disabled', true);
     </script>
 @endsection

@@ -9,9 +9,11 @@
 		        		<h3><i class="fa fa-list-ul"></i> List of Police Station Names</h3>
 		        </div>
 	        	<div class="col-sm-5">
-	        		<a href="{{ url('police-station/create') }}" class="btn btn-outline-primary pull-right">
-	                	<i class="fa fa-plus"></i> Create <b>Police Station Name</b>
-	            	</a>
+	        		@can('admin-access')
+		        		<a href="{{ url('police-station/create') }}" class="btn btn-outline-primary pull-right">
+		                	<i class="fa fa-plus"></i> Create <b>Police Station Name</b>
+		            	</a>
+	            	@endcan
 		    	</div>
 	        </div>
 	        <div class="card">
@@ -28,7 +30,9 @@
 		                            <th>Police Station Name</th>
 		                            <th>District Name</th>
 		                            <th>Division Name</th>
-		                            <th>Edit</th>
+		                            @can('admin-access')
+		                            	<th>Edit</th>
+		                            @endcan
 		                        </tr>
 		                    </thead>
 		                    <tbody>
@@ -42,7 +46,9 @@
 		                            <td>{{ $policeStation->name }}</td>
 		                            <td>{{ $policeStation->district->name }}</td>
 		                            <td>{{ $policeStation->division->name }}</td>
-		                            <td>{!! Html::link("police-station/$policeStation->id/edit",' Edit', ['class' => 'fa fa-edit btn btn-outline-success btn-xs']) !!}</td>  
+		                            @can('admin-access')
+		                            	<td>{!! Html::link("police-station/$policeStation->id/edit",' Edit', ['class' => 'fa fa-edit btn btn-outline-success btn-xs']) !!}</td>
+		                            @endcan  
 		                        </tr>
 		                    @endforeach
 		                    </tbody>

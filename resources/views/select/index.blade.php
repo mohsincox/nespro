@@ -9,9 +9,11 @@
 		        		<h3><i class="fa fa-list-ul"></i> List of Select Names</h3>
 		        </div>
 	        	<div class="col-sm-5">
-	        		<a href="{{ url('select/create') }}" class="btn btn-outline-primary pull-right">
-		                <i class="fa fa-plus"></i> Create <b>Select Name</b>
-		            </a>
+	        		@can('admin-access')
+		        		<a href="{{ url('select/create') }}" class="btn btn-outline-primary pull-right">
+			                <i class="fa fa-plus"></i> Create <b>Select Name</b>
+			            </a>
+		            @endcan
 		    	</div>
 	        </div>
 	        <div class="card">
@@ -25,7 +27,9 @@
 	                        <tr class="">
 	                            <th>SL</th>
 	                            <th>Select Names</th>
-	                            <th>Edit</th>
+	                            @can('admin-access')
+	                            	<th>Edit</th>
+	                            @endcan
 	                        </tr>
 	                    </thead>
 	                    <tbody>
@@ -36,7 +40,9 @@
 	                        <tr>
 	                            <td>{{ ++$i }}</td>
 	                            <td>{{ $select->name }}</td>
-	                            <td>{!! Html::link("select/$select->id/edit",' Edit', ['class' => 'fa fa-edit btn btn-outline-success btn-xs']) !!}</td>
+	                            @can('admin-access')
+	                            	<td>{!! Html::link("select/$select->id/edit",' Edit', ['class' => 'fa fa-edit btn btn-outline-success btn-xs']) !!}</td>
+	                            @endcan
 	                        </tr>
 	                    @endforeach
 	                    </tbody>

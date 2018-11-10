@@ -8,7 +8,7 @@ class Profile extends Model
 {
     protected $table = 'profiles';
 
-    protected $fillable = ['phone_number'];
+    protected $fillable = ['phone_number', 'consumer_name', 'address', 'activity_campaign_name', 'agent'];
 
     public function division()
     {
