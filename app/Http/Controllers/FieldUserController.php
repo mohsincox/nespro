@@ -14,6 +14,8 @@ use App\Models\Option;
 use App\Models\Profile;
 use App\Models\Crm;
 use Illuminate\Support\Facades\Auth;
+use Validator;
+use Illuminate\Support\Facades\Input;
 
 class FieldUserController extends Controller
 {
@@ -94,6 +96,19 @@ class FieldUserController extends Controller
 
     public function store(Request $request)
     {
+        $input = Input::all();
+        $rules = [
+            'phone_number' => 'required|numeric|digits_between:11,11'
+        ];
+        $messages = [];
+        
+        $validator = Validator::make($input, $rules, $messages);
+        if ($validator->fails()) {
+            flash()->error('Something Wrong!');
+            return redirect()->back()
+                        ->withErrors($validator)
+                        ->withInput();
+        }
         //return $request->all();
         $phoneNumber=preg_replace('/\D/', '',  $request->phone_number);          
         if(substr($phoneNumber, 0, 1) == "+" ) $phoneNumber=substr($phoneNumber, 1);       

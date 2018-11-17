@@ -271,7 +271,7 @@
 	                                    <div class="input-group-prepend">
 	                                        <span class="input-group-text bg-secondary text-white">Acti./Camp.Name</span>
 	                                    </div>
-	                                    {!! Form::select('activity_campaign_name', $actOrCampList, '', ['class' => 'form-control', 'placeholder' => 'Select Acti./Camp.Name']) !!}
+	                                    {!! Form::select('activity_campaign_name', $actOrCampList, null, ['class' => 'form-control', 'placeholder' => 'Select Acti./Camp.Name']) !!}
 	                                </div>
 	                            </div>
 	                        </div>

@@ -40,7 +40,7 @@
                                     <h4 class="modal-title">Confirmation Message</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <h3 class="text-center">Want to <b>create a Ticket</b>?</h3>
+                                    <h3 class="text-center">Want to <b>upload Excel file</b>?</h3>
                                 </div>
                                 <div class="modal-footer bg-success">   
                                     {!! Form::submit('YES', ['class' => 'btn btn-primary btn-block submitBtnUpload']) !!}
@@ -50,6 +50,31 @@
                     </div>
 
 					{!! Form::close() !!}
+					<p class="text-center bg-dark text-white" style="margin-bottom: 0px;"><b class="">Data Excel Sample</b></p>
+					<div class="table-responsive">
+		                <table id="myTable" class="table table-bordered">
+		                    <thead>
+		                        <tr>
+		                            <th>phone_number</th>
+		                            <th>consumer_name</th>
+		                            <th>address</th>
+		                            <th>activity_campaign_name</th>
+		                            <th>agent</th>
+		                        </tr>
+		                    </thead>
+		                    <tbody>
+		                    
+		                        <tr>
+		                            <td>1868218443</td>
+		                            <td>Bodal</td>
+		                            <td>taltoal</td>
+		                            <td>NIDO Fortichoco Activation</td>
+		                			<td>Chaity</td>
+		                        </tr>
+		                    
+		                    </tbody>
+		                </table>
+	            	</div>
 
 				</div>
 			</div>

@@ -43,24 +43,18 @@ class UploadController extends Controller
 		if(Input::hasFile('file')){
 			$path = Input::file('file')->getRealPath();
 			$results=Excel::load($path)->get();
-			print_r($results);
+			//print_r($results);
 			foreach ($results as $row) {
 
 				if(strlen($row['phone_number']) == 10) {
 					$phoneNumber = '0'.$row['phone_number'];
 
-					// $profile = new Profile;
-			  //       $profile->phone_number = $request->phone_number;
-			  //       $profile->consumer_name = $request->consumer_name;
-			  //       $profile->address = $request->address;
-			  //       $profile->activity_campaign_name = $request->activity_campaign_name;
-			  //       $profile->agent = $request->agent;
-			  //       $profile->save();
 				  	Profile::create([
 				        'phone_number' => $phoneNumber,
 				        'consumer_name' => $row->consumer_name,
 				        'address' => $row->address,
 				        'activity_campaign_name' => $row->activity_campaign_name,
+				        'activity_date' => $row->activity_date,
 				        'agent' => $row->agent
 				    ]);
 

@@ -22,8 +22,9 @@ class UserController extends Controller
     {
     	$user = User::find($id);
         //$roleList = ['super_admin' => 'Super Admin', 'ticket_admin' => 'Ticket Admin', 'user' => 'User'];
-    	$roleList = ['admin' => 'Admin', 'user' => 'User'];
-    	return view('user.edit', compact('user', 'roleList'));
+        $roleList = ['admin' => 'Admin', 'user' => 'User'];
+    	$activeList = [1 => 'Yes', 0 => 'No'];
+    	return view('user.edit', compact('user', 'roleList', 'activeList'));
     }
     public function update(Request $request, $id)
     {
@@ -34,6 +35,7 @@ class UserController extends Controller
         } else {
             $user->name = $request->name;
             $user->role = $request->role;
+            $user->active = $request->active;
             $user->phone_number = $request->phone_number;
             $user->address = $request->address;
             $user->save();

@@ -22,34 +22,34 @@
 	            </div>
 	            <div class="card-body">
 	            	<div class="table-responsive">
-	                <table id="myTable" class="table table-bordered table-striped table-hover">
-	                    <thead>
-	                        <tr class="">
-	                            <th>SL</th>
-	                            <th>Quiz Names</th>
-	                            <th>Status</th>
-	                            @can('admin-access')
-									<th>Edit</th>
-                    			@endcan
-	                        </tr>
-	                    </thead>
-	                    <tbody>
-	                    <?php
-	                        $i = 0;
-	                    ?>
-	                    @foreach($quizzes as $quiz)
-	                        <tr>
-	                            <td>{{ ++$i }}</td>
-	                            <td>{{ $quiz->name }}</td>
-	                            <td>{{ $quiz->status }}</td>
-	                            @can('admin-access')
-	                            	<td>{!! Html::link("quiz/$quiz->id/edit",' Edit', ['class' => 'fa fa-edit btn btn-outline-success btn-xs']) !!}</td>
-	                            @endcan
-	                        </tr>
-	                    @endforeach
-	                    </tbody>
-	                </table>
-	            </div>
+		                <table id="myTable" class="table table-bordered table-striped table-hover">
+		                    <thead>
+		                        <tr class="">
+		                            <th>SL</th>
+		                            <th>Quiz Names</th>
+		                            <th>Status</th>
+		                            @can('admin-access')
+										<th>Edit</th>
+	                    			@endcan
+		                        </tr>
+		                    </thead>
+		                    <tbody>
+		                    <?php
+		                        $i = 0;
+		                    ?>
+		                    @foreach($quizzes as $quiz)
+		                        <tr>
+		                            <td>{{ ++$i }}</td>
+		                            <td>{{ $quiz->name }}</td>
+		                            <td>{{ $quiz->status }}</td>
+		                            @can('admin-access')
+		                            	<td>{!! Html::link("quiz/$quiz->id/edit",' Edit', ['class' => 'fa fa-edit btn btn-outline-success btn-xs']) !!}</td>
+		                            @endcan
+		                        </tr>
+		                    @endforeach
+		                    </tbody>
+		                </table>
+	            	</div>
 	            </div>
 	        </div>
 	    </div>

@@ -37,6 +37,20 @@
 						    </div>
 						</div>
 
+						<div class="form-group required {{ $errors->has('active') ? 'has-error' : '' }}">
+							<div class="row">
+							    {!! Form::label('active', 'Select Activity', ['class' => 'control-label col-sm-3 col-xs-3']) !!}
+							    <div class="col-xs-9 col-sm-9">
+							    	<div class="col-xs-12 col-sm-12">
+								        {!! Form::select('active', $activeList, null, ['class' => 'form-control', 'placeholder' => 'Select Activeity', 'required' => 'required']) !!}
+								        <span class="text-danger">
+								            {{ $errors->first('active') }}
+								        </span>
+							        </div>
+							    </div>
+						    </div>
+						</div>
+
 						<div class="form-group {{ $errors->has('phone_number') ? 'has-error' : ''}}">
 							<div class="row">
 							    {!! Form::label('Phone Number', 'Phone Number', ['class' => 'col-xs-3 col-sm-3 control-label']) !!}

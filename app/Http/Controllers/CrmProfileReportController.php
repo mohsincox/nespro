@@ -53,12 +53,14 @@ class CrmProfileReportController extends Controller
         $type = $request->type;
         $startDateShow = $request->start_date;
         $endDateShow = $request->end_date;
+
+        //return $crms = Crm::with(['profile', 'profile.division', 'profile.district', 'profile.policeStation', 'brand', 'createdBy'])->whereBetween('created_at', [$startDate, $endDate])->get();
        
         Excel::create('CrmProfile'.$startDateShow.$endDateShow, function($excel) use ($startDate,  $endDate, $type) {
 
             $excel->sheet('Sheet1', function($sheet) use ($startDate,  $endDate, $type) {
 
-                $crms = Crm::with(['profile', 'profile.division', 'profile.district', 'profile.policeStation', 'brand'])->whereBetween('created_at', [$startDate, $endDate])->get();
+                $crms = Crm::with(['profile', 'profile.division', 'profile.district', 'profile.policeStation', 'brand', 'createdBy'])->whereBetween('created_at', [$startDate, $endDate])->get();
 
                 $arr =array();
                 foreach($crms as $crm) {
@@ -106,7 +108,19 @@ class CrmProfileReportController extends Controller
                         $brandName = null;
                     }
 
-                    $data =  array($crm->id, $crm->phone_number,  $crm->profile->consumer_name, $crm->profile->consumer_age, $crm->profile->consumer_gender, $division, $district, $policeStation, $crm->profile->address, $crm->profile->alternative_phone_number, $crm->profile->profession, $crm->profile->sec, $crm->profile->number_of_child, $crm->profile->total_family_member, $child1Age, $child2Age, $child3Age, $crm->profile->prefered_brand, $brandName, $crm->product, $crm->competition_brand_usage, $crm->activity_campaign_name, $crm->source_of_knowing, $crm->ccid, $crm->sales_force, $crm->consumer_satisfaction_index, $crm->interested_in_crm, $crm->reasons_of_call, $crm->call_category, $crm->verbatim, $crm->profile->agent, $crm->created_at);
+                    if (isset($crm->createdBy->name)) {
+                        $createdBy = $crm->createdBy->name;
+                    } else {
+                        $createdBy = null;
+                    }
+
+                    if (isset($crm->profile->agent)) {
+                        $agent = $crm->profile->agent;
+                    } else {
+                        $agent = $createdBy;
+                    }
+
+                    $data =  array($crm->id, $crm->phone_number,  $crm->profile->consumer_name, $crm->profile->consumer_age, $crm->profile->consumer_gender, $division, $district, $policeStation, $crm->profile->address, $crm->profile->alternative_phone_number, $crm->profile->profession, $crm->profile->sec, $crm->profile->number_of_child, $crm->profile->total_family_member, $child1Age, $child2Age, $child3Age, $crm->profile->prefered_brand, $brandName, $crm->product, $crm->competition_brand_usage, $crm->activity_campaign_name, $crm->source_of_knowing, $crm->ccid, $crm->sales_force, $crm->consumer_satisfaction_index, $crm->interested_in_crm, $crm->reasons_of_call, $crm->call_category, $crm->verbatim, $agent, $crm->created_at);
                     array_push($arr, $data);
                 }
                 

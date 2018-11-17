@@ -22,9 +22,12 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text bg-primary text-white">Consumer's Phone No. <span style="color: red;"> &nbsp; * </span></span>
                                     </div>
-                                    {!! Form::text('phone_number', null, ['class' => 'form-control', 'placeholder' => 'Enter Consumer Phone Number', 'autocomplete' => 'off', 'onkeypress' => 'return event.charCode >= 48 && event.charCode <= 57', 'required' => 'required']) !!}
+                                    {!! Form::text('phone_number', null, ['class' => 'form-control', 'placeholder' => 'Enter Consumer Phone Number', 'autocomplete' => 'off', 'onkeypress' => 'return event.charCode >= 48 && event.charCode <= 57']) !!}
                                 </div>
                             </div>
+                            <span class="text-danger">
+                                {{ $errors->first('phone_number') }}
+                            </span>
                             <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
                                 <div class="input-group mb-2 input-group-sm">
                                     <div class="input-group-prepend">

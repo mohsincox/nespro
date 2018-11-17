@@ -14,6 +14,7 @@
 								<th>SL</th>
 								<th>Name</th>
 								<th>Email</th>
+								<th>Active</th>
 								<th>Role</th>
 								<th>Phone Number</th>
 								<th>Address</th>
@@ -32,11 +33,18 @@
 								} else {
 									$role = "User";
 								}
+
+								if ($user->active == 1) {
+									$active = 'Yes';
+								} else {
+									$active = 'No';
+								}
 							?>	
 							<tr>
 								<td>{{ $user->id }}</td>
 								<td>{{ $user->name }}</td>
 								<td>{{ $user->email }}</td>
+								<td>{{ $active }}</td>
 								<td>{{ $role }}</td>
 								<td>{{ $user->phone_number }}</td>
 								<td>{{ $user->address }}</td>
