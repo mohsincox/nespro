@@ -61,6 +61,7 @@ Route::get('/field-user', 'FieldUserController@index');
 Route::get('/field-user/create', 'FieldUserController@create');
 Route::post('/field-user', 'FieldUserController@store');
 
+
 Route::group([ 'middleware' => 'can:admin-access'], function () {
 	Route::get('/user/{id}/edit', 'UserController@edit');
 	Route::put('/user/{id}', 'UserController@update');
@@ -161,3 +162,52 @@ Route::group([ 'middleware' => 'can:admin-access'], function () {
 	Route::post('/upload-srore', 'UploadController@store');
 
 });
+
+Route::get('/all-report-form-excel', 'CrmProfileReportController@allReportFormExcel');
+
+Route::get('/crm-profile/crm-report-form', 'CrmProfileReportController@crmReportForm');
+Route::post('/crm-profile/crm-report-show', 'CrmProfileReportController@crmReportShow');
+Route::get('/crm-profile/crm-report-form-excel', 'CrmProfileReportController@crmReportFormExcel');
+Route::post('/crm-profile/crm-report-show-excel', 'CrmProfileReportController@crmReportShowExcel');
+
+Route::get('/crm-profile/brand-wise-form', 'CrmProfileReportController@brandWiseForm');
+Route::post('/crm-profile/brand-wise-show', 'CrmProfileReportController@brandWiseShow');
+Route::get('/crm-profile/brand-wise-form-excel', 'CrmProfileReportController@brandWiseFormExcel');
+Route::post('/crm-profile/brand-wise-show-excel', 'CrmProfileReportController@brandWiseShowExcel');
+
+Route::get('/crm-profile/brand-and-div-wise-form', 'CrmProfileReportController@brandAndDivWiseForm');
+Route::post('/crm-profile/brand-and-div-wise-show', 'CrmProfileReportController@brandAndDivWiseShow');
+Route::get('/crm-profile/brand-and-div-wise-form-excel', 'CrmProfileReportController@brandAndDivWiseFormExcel');
+Route::post('/crm-profile/brand-and-div-wise-show-excel', 'CrmProfileReportController@brandAndDivWiseShowExcel');
+Route::post('/crm-profile/brand-and-date-wise-show-excel', 'CrmProfileReportController@brandAndDateWiseShowExcel');
+
+Route::get('/profile-report/child-age-form-old', 'ProfileReportController@childAgeFormOld');
+Route::post('/profile-report/child-age-show-old', 'ProfileReportController@childAgeShowOld');
+Route::get('/profile-report/get-ymd', 'ProfileReportController@getYMD');
+
+Route::get('/profile-report/child-age-form', 'ProfileReportController@childAgeForm');
+Route::post('/profile-report/child-age-show', 'ProfileReportController@childAgeShow');
+Route::get('/profile-report/child-age-form-excel', 'ProfileReportController@childAgeFormExcel');
+Route::post('/profile-report/child-age-show-excel', 'ProfileReportController@childAgeShowExcel');
+Route::post('/profile-report/child-age-and-date-wise-show-excel', 'ProfileReportController@childAgeAndDateWiseShowExcel');
+
+Route::get('/profile-report/division-all-show', 'ProfileReportController@divisionAllShow');
+Route::get('/profile-report/division-all-download-excel', 'ProfileReportController@divisionAllDownloadExcel');
+Route::get('/profile-report/division-wise-form', 'ProfileReportController@divisionWiseForm');
+Route::post('/profile-report/division-wise-show', 'ProfileReportController@divisionWiseShow');
+Route::get('/profile-report/division-wise-form-excel', 'ProfileReportController@divisionWiseFormExcel');
+Route::post('/profile-report/division-wise-show-excel', 'ProfileReportController@divisionWiseShowExcel');
+Route::post('/profile-report/division-and-date-wise-show-excel', 'ProfileReportController@divisionAndDateWiseShowExcel');
+
+Route::get('/profile-report/district-wise-form', 'ProfileReportController@districtWiseForm');
+Route::get('/profile-report/division-district-show', 'ProfileReportController@divisionDistrictShow');
+Route::post('/profile-report/district-wise-show', 'ProfileReportController@districtWiseShow');
+Route::get('/profile-report/district-wise-form-excel', 'ProfileReportController@districtWiseFormExcel');
+Route::post('/profile-report/district-wise-show-excel', 'ProfileReportController@districtWiseShowExcel');
+
+Route::get('/profile-report/ps-wise-form', 'ProfileReportController@psWiseForm');
+Route::get('/profile-report/district-ps-show', 'ProfileReportController@districtPsShow');
+Route::post('/profile-report/ps-wise-show', 'ProfileReportController@psWiseShow');
+Route::get('/profile-report/ps-wise-form-excel', 'ProfileReportController@psWiseFormExcel');
+Route::post('/profile-report/ps-wise-show-excel', 'ProfileReportController@psWiseShowExcel');
+

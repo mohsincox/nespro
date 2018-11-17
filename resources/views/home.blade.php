@@ -120,7 +120,9 @@
                             <div class="info-box bg-red">
                                 <span class="info-box-icon "><i class="fa fa-arrow-right"></i></span>
                                 <div class="info-box-content">
+
                                     <center><span class="info-box-text" style="font-size: 18px;">Thana</span></center>
+
                                     <center><span class="info-box-number" style="font-size: 35px;">{{ $policeStationCount }}</span></center>
                                 </div>
                             </div>

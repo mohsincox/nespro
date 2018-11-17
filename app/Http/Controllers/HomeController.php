@@ -12,8 +12,11 @@ use App\Models\Product;
 use App\Models\Division;
 use App\Models\District;
 use App\Models\PoliceStation;
+
 use Illuminate\Support\Facades\Auth;
 //use Redirect;
+
+
 
 class HomeController extends Controller
 {
@@ -24,7 +27,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
 
     /**
@@ -34,6 +37,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+
         $role = Auth::user()->role;
         if ($role == 'user') {
             //return Redirect::to('field-user/create');
@@ -53,7 +57,7 @@ class HomeController extends Controller
         $districtCount = District::count();
         $policeStationCount = PoliceStation::count();
 
-        return view('home', compact('userCount', 'profileTotalCount', 'profileTodayCount', 'crmTotalCount', 'crmTodayCount', 'brandCount', 'productCount', 'divisionCount', 'districtCount', 'policeStationCount'));     
+        return view('home', compact('userCount', 'profileTotalCount', 'profileTodayCount', 'crmTotalCount', 'crmTodayCount', 'brandCount', 'productCount', 'divisionCount', 'districtCount', 'policeStationCount'));
     }
 
     public function test()
